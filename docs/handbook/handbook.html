@@ -1,0 +1,1419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Agency Platform — Project Handbook</title>
+<style>
+:root{
+  --ink:#1d2330; --muted:#5b6476; --line:#d9dde5; --soft:#f4f6f9;
+  --accent:#b4452a; --accent-soft:#fbeee9;
+  --blue:#2c5d8f; --blue-soft:#eaf1f8;
+  --green:#2f6b45; --green-soft:#e9f4ed;
+  --amber:#8a5a00; --amber-soft:#fdf4e1;
+}
+@page{
+  size:A4; margin:20mm 17mm 20mm 17mm;
+  @bottom-left{content:"Agency Platform · Project Handbook"; font:8pt -apple-system,"Helvetica Neue",sans-serif; color:#8a93a3;}
+  @bottom-right{content:counter(page); font:8pt -apple-system,"Helvetica Neue",sans-serif; color:#8a93a3;}
+}
+@page:first{ @bottom-left{content:none} @bottom-right{content:none} }
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+body{margin:0; background:#fff; color:var(--ink); font:10.2pt/1.5 Charter,"Iowan Old Style",Georgia,serif;}
+h1,h2,h3,h4,.sans,table,.tag,.box-t,.toc,.cover{font-family:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif}
+h1.part{page-break-before:always; font-size:24pt; line-height:1.15; margin:0 0 4mm; padding-top:2mm; letter-spacing:-.01em}
+h1.part .n{display:block; font-size:10pt; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:2mm}
+.part-intro{font-size:11pt; color:var(--muted); margin:0 0 6mm; max-width:150mm}
+h2{font-size:14.5pt; margin:8mm 0 2.5mm; padding-bottom:1.2mm; border-bottom:1.5px solid var(--ink); break-after:avoid}
+h2.newpage{page-break-before:always; margin-top:0}
+h3{font-size:11.5pt; margin:5mm 0 1.5mm; break-after:avoid}
+h4{font-size:10pt; margin:3.5mm 0 1mm; break-after:avoid; color:var(--ink)}
+p{margin:0 0 2.4mm; orphans:3; widows:3}
+ul,ol{margin:0 0 2.6mm; padding-left:5.5mm}
+li{margin:0 0 1mm}
+a{color:var(--blue); text-decoration:none}
+b,strong{font-weight:650}
+code{font:8.6pt/1.4 Menlo,"SF Mono",monospace; background:var(--soft); padding:.2mm 1mm; border-radius:1mm; white-space:nowrap}
+pre{font:7.9pt/1.42 Menlo,"SF Mono",monospace; background:#f6f7f9; border:1px solid #e3e6ec; border-left:3px solid var(--blue); border-radius:1.5mm; padding:2.6mm 3.2mm; margin:1.5mm 0 3.2mm; white-space:pre-wrap; word-break:break-word; break-inside:avoid}
+pre .c{color:#6a7385}
+pre code, pre{white-space:pre-wrap}
+.cap{font:8pt -apple-system,"Helvetica Neue",sans-serif; color:var(--muted); margin:-2mm 0 3mm}
+table{border-collapse:collapse; width:100%; font-size:8.6pt; line-height:1.38; margin:1.5mm 0 4mm}
+th{text-align:left; background:var(--soft); font-weight:650; border-bottom:1.5px solid #b9c0cc}
+th,td{padding:1.4mm 2mm; vertical-align:top; border-bottom:1px solid var(--line)}
+tr{break-inside:avoid}
+td code,th code{font-size:7.8pt; white-space:normal}
+.box{border-radius:2mm; padding:2.8mm 3.6mm; margin:2mm 0 3.6mm; break-inside:avoid; border:1px solid}
+.box-t{display:block; font-size:7.6pt; font-weight:700; letter-spacing:.09em; text-transform:uppercase; margin-bottom:1mm}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
+.rec{background:var(--blue-soft); border-color:#c9daeb}.rec .box-t{color:var(--blue)}
+.ask{background:var(--amber-soft); border-color:#efdcae}.ask .box-t{color:var(--amber)}
+.warn{background:var(--accent-soft); border-color:#f0cfc4}.warn .box-t{color:var(--accent)}
+.ok{background:var(--green-soft); border-color:#c8e2d1}.ok .box-t{color:var(--green)}
+.note{background:var(--soft); border-color:var(--line)}.note .box-t{color:var(--muted)}
+.card{border:1px solid var(--line); border-radius:2mm; padding:3mm 3.8mm 1.6mm; margin:0 0 4mm; break-inside:auto}
+.card h3{margin:0 0 1.2mm; font-size:11.5pt; display:flex; align-items:baseline; gap:2mm; flex-wrap:wrap}
+.card.keep{break-inside:avoid}
+.tag{font-size:7pt; font-weight:600; letter-spacing:.04em; padding:.5mm 1.6mm; border-radius:5mm; background:var(--soft); color:var(--muted); white-space:nowrap}
+.tag.deep{background:var(--accent-soft); color:var(--accent)}
+.one{font-size:10.4pt; font-style:italic; color:#333b4b; margin-bottom:2mm}
+.r{margin:0 0 1.8mm; break-inside:avoid}
+.r > b:first-child{font:650 8pt -apple-system,"Helvetica Neue",sans-serif; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); display:block; margin-bottom:.4mm}
+.cols{display:grid; grid-template-columns:1fr 1fr; gap:4mm}
+.cover{height:252mm; display:flex; flex-direction:column; justify-content:space-between; padding:6mm 0 0}
+.cover .kicker{font-size:10pt; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent)}
+.cover h1{font-size:40pt; line-height:1.02; margin:6mm 0 5mm; letter-spacing:-.02em}
+.cover .sub{font-size:14pt; line-height:1.4; color:#3a4254; max-width:140mm}
+.cover .meta{font-size:9pt; color:var(--muted); line-height:1.6; border-top:1px solid var(--line); padding-top:4mm}
+.cover .band{height:3mm; background:linear-gradient(90deg,var(--accent) 0 33%,#d9a441 33% 66%,var(--blue) 66%); border-radius:1mm; margin-bottom:6mm}
+.toc{font-size:9.6pt}
+.toc .l1{font-weight:700; margin-top:3mm}
+.toc .row{display:flex; gap:2mm; align-items:baseline; padding:.5mm 0}
+.toc .row .t{flex:0 1 auto}
+.toc .row .dots{flex:1; border-bottom:1px dotted #b8bfcc; transform:translateY(-1mm)}
+.toc .row .pg{flex:0 0 8mm; text-align:right; color:var(--muted)}
+.toc .l2{padding-left:5mm}
+.cidx{columns:2; column-gap:8mm; font-size:8.8pt}
+.cidx .row{break-inside:avoid}
+.diagram{margin:2mm 0 4mm; break-inside:avoid; text-align:center}
+.diagram svg{max-width:100%}
+.kbd{font:8.4pt Menlo,monospace}
+.check li{list-style:none; margin-left:-5mm; padding-left:6mm; text-indent:-5mm}
+.check li::before{content:"☐  "; font-family:-apple-system,sans-serif; color:var(--muted)}
+.small{font-size:9pt}
+.muted{color:var(--muted)}
+.avoid{break-inside:avoid}
+.pb{page-break-before:always}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div>
+    <div class="band"></div>
+    <div class="kicker">Agency Platform</div>
+    <h1>Project<br>Handbook</h1>
+    <p class="sub">The way we build it, what you need to know and prepare before you start, the plan for the first slice, and a review of every concept that slice uses.</p>
+  </div>
+  <div>
+    <div class="box note" style="margin-bottom:8mm">
+      <span class="box-t">How to use this handbook</span>
+      <ul>
+        <li><b>Parts A–C</b> (about one hour): read once now. They cover the client, the process, your machine, the decisions still open and the questions for the client.</li>
+        <li><b>Part D</b> is the checklist for slice 1, the walking skeleton, split into pull requests.</li>
+        <li><b>Part E</b> is reference. Read a concept card just before the task that introduces it. Every card answers the same questions: what it is, why we need it here, how it looks in this project, what to watch out for and where to read more. Cards marked <span class="tag deep">Deep dive</span> explain in more depth.</li>
+      </ul>
+      <p style="margin-top:2mm">Coloured boxes: <span class="tag" style="background:var(--blue-soft);color:var(--blue)">Recommendation</span> a proposal that needs your decision (and an ADR when marked) · <span class="tag" style="background:var(--amber-soft);color:var(--amber)">Ask the client</span> · <span class="tag" style="background:var(--accent-soft);color:var(--accent)">Gotcha</span> a trap people often fall into · <span class="tag" style="background:var(--green-soft);color:var(--green)">Check</span> how to verify a step.</p>
+    </div>
+    <div class="meta">
+      Version 1 · 11 October 2026 · prepared with Claude Code for the developer of the Agency Platform<br>
+      Sources: <code>CLAUDE.md</code>, <code>START-HERE.md</code>, <code>docs/analysis-and-design.md</code>, <code>docs/development-strategy.md</code>, ADR 0001–0006, and a check of the development machine on 11 October 2026.<br>
+      Code in this handbook is a <i>sketch</i> that shows the shape. The real code arrives in the pull requests, with tests.
+    </div>
+  </div>
+</section>
+
+<h1 class="part" id="toc" style="page-break-before:always"><span class="n">Contents</span>Contents</h1>
+<div class="toc"><div class="row l1"><a class="t" href="#part-a">Part A · The project</a><span class="dots"></span><span class="pg">3</span></div><div class="row l2"><a class="t" href="#a1">A1. The client and the problem</a><span class="dots"></span><span class="pg">3</span></div><div class="row l2"><a class="t" href="#a2">A2. Business vocabulary</a><span class="dots"></span><span class="pg">4</span></div><div class="row l2"><a class="t" href="#a3">A3. Your two roles: delivering for a client, and learning</a><span class="dots"></span><span class="pg">5</span></div><div class="row l2"><a class="t" href="#a4">A4. Decisions already made</a><span class="dots"></span><span class="pg">6</span></div><div class="row l1"><a class="t" href="#part-b">Part B · The process</a><span class="dots"></span><span class="pg">8</span></div><div class="row l2"><a class="t" href="#b1">B1. The roadmap: seven phases, each with a gate</a><span class="dots"></span><span class="pg">8</span></div><div class="row l2"><a class="t" href="#b2">B2. How one vertical slice is built</a><span class="dots"></span><span class="pg">8</span></div><div class="row l2"><a class="t" href="#b3">B3. Your daily loop</a><span class="dots"></span><span class="pg">9</span></div><div class="row l2"><a class="t" href="#b4">B4. Definition of done</a><span class="dots"></span><span class="pg">10</span></div><div class="row l2"><a class="t" href="#b5">B5. Writing an ADR</a><span class="dots"></span><span class="pg">10</span></div><div class="row l2"><a class="t" href="#b6">B6. Keeping documentation alive</a><span class="dots"></span><span class="pg">10</span></div><div class="row l1"><a class="t" href="#part-c">Part C · What you should know and prepare</a><span class="dots"></span><span class="pg">12</span></div><div class="row l2"><a class="t" href="#c1">C1. Your machine (checked 11 October 2026)</a><span class="dots"></span><span class="pg">12</span></div><div class="row l2"><a class="t" href="#c2">C2. Things found in the repository today</a><span class="dots"></span><span class="pg">12</span></div><div class="row l2"><a class="t" href="#c3">C3. Decisions to make during slice 1</a><span class="dots"></span><span class="pg">13</span></div><div class="row l2"><a class="t" href="#c4">C4. Questions for the client</a><span class="dots"></span><span class="pg">15</span></div><div class="row l2"><a class="t" href="#c5">C5. Costs and accounts to expect</a><span class="dots"></span><span class="pg">16</span></div><div class="row l1"><a class="t" href="#part-d">Part D · Slice 1: the walking skeleton</a><span class="dots"></span><span class="pg">17</span></div><div class="row l2"><a class="t" href="#d1">D1. Goal and finish line</a><span class="dots"></span><span class="pg">17</span></div><div class="row l2"><a class="t" href="#d2">D2. Repository layout after slice 1</a><span class="dots"></span><span class="pg">18</span></div><div class="row l2"><a class="t" href="#d3">D3. The tasks, one pull request each</a><span class="dots"></span><span class="pg">18</span></div><div class="row l2"><a class="t" href="#d4">D4. Task by task</a><span class="dots"></span><span class="pg">20</span></div><div class="row l1"><a class="t" href="#part-e">Part E · Concept reviews</a><span class="dots"></span><span class="pg">28</span></div><div class="row l2"><a class="t" href="#e1">E1. Architecture and ways of working</a><span class="dots"></span><span class="pg">29</span></div><div class="row l2"><a class="t" href="#e2">E2. C# and .NET</a><span class="dots"></span><span class="pg">34</span></div><div class="row l2"><a class="t" href="#e3">E3. Data: EF Core and PostgreSQL</a><span class="dots"></span><span class="pg">40</span></div><div class="row l2"><a class="t" href="#e4">E4. Security</a><span class="dots"></span><span class="pg">43</span></div><div class="row l2"><a class="t" href="#e5">E5. Front end</a><span class="dots"></span><span class="pg">46</span></div><div class="row l2"><a class="t" href="#e6">E6. Containers, Kubernetes and delivery</a><span class="dots"></span><span class="pg">49</span></div><div class="row l2"><a class="t" href="#e7">E7. Git and pull requests</a><span class="dots"></span><span class="pg">53</span></div><div class="row l1"><a class="t" href="#part-f">Appendix · Reference</a><span class="dots"></span><span class="pg">54</span></div><div class="row l2"><a class="t" href="#f1">F1. Acronyms</a><span class="dots"></span><span class="pg">54</span></div><div class="row l2"><a class="t" href="#f2">F2. Official documentation</a><span class="dots"></span><span class="pg">54</span></div><div class="row l2"><a class="t" href="#f3">F3. What comes next (slice 2 preview)</a><span class="dots"></span><span class="pg">55</span></div></div>
+
+<!-- ===================================================== PART A -->
+<h1 class="part" id="part-a"><span class="n">Part A</span>The project</h1>
+<p class="part-intro">Who the client is, what is wrong with what they have, what we are building instead, and the business words you will hear every day.</p>
+
+<h2 id="a1">A1. The client and the problem</h2>
+<p>The client is a <b>DMC</b> (Destination Management Company) based in Morocco, with branches in <b>Agadir</b> and <b>Marrakech</b>. A DMC runs the "ground" part of a trip. It buys hotel nights, transfers, excursions, guides and vehicles from local suppliers, packages them (for example as circuits), and sells them to foreign tour operators, travel agencies, online travel agencies (OTAs such as Expedia) and directly to travellers. It earns the <b>margin</b> between what it buys at (the <i>cost</i>) and what it sells at (the <i>sale price</i>).</p>
+<p>Today the agency runs <b>"Agence 2024"</b>, a Windows desktop application.</p>
+<table>
+<tr><th style="width:30%">Old system</th><th>What it means for us</th></tr>
+<tr><td>VB.NET WinForms, .NET Framework 4.8, ~140 forms</td><td>Business logic sits in click handlers and is copied between forms. Nothing can be reused.</td></tr>
+<tr><td>SQL Server 2017: 127 tables, 780 stored procedures</td><td>The rules live in procedures. About 40 procedures that the code calls do not exist.</td></tr>
+<tr><td>112 of 127 tables have no primary key, and there are no foreign keys</td><td>Duplicates and orphan rows are possible. This is why the new system starts empty (ADR 0005).</td></tr>
+<tr><td>One database per season (<code>agence_sti_2026</code>)</td><td>Reports across years and contracts that cross November need workarounds.</td></tr>
+<tr><td>Crystal Reports, 93 <code>.rpt</code> files</td><td>Replaced by a PDF library in the new system.</td></tr>
+</table>
+
+<h3>The five problems that drive the whole project</h3>
+<ol>
+<li><b>Contracts are not a price source.</b> Several versions of the same contract circulate, so prices are typed and checked by hand. The client wants prices <b>calculated automatically</b>, and that only works if exactly one version is valid on any date.</li>
+<li><b>Invoicing is unsafe.</b> Issued invoices get overwritten, cancelled numbers get reused, and two operators can receive the same number because the code reads the counter and then increments it in two separate steps.</li>
+<li><b>Money is stored as <code>float</code></b>, which causes rounding errors on totals. There is no real VAT. Closed months can be reopened by anyone.</li>
+<li><b>No itinerary.</b> A booking file is a list of sales lines, so vouchers, transfers and lists are retyped by hand.</li>
+<li><b>Cash is unsafe.</b> Some procedures corrupt data (an <code>UPDATE</code> without a <code>WHERE</code> recalculates every cash voucher). There is no bank reconciliation and no closing. Passwords sit in plain text in <code>app.config</code>.</li>
+</ol>
+<p>Each problem becomes a rule in <code>CLAUDE.md</code>. Point 1 becomes "one active contract version per date". Point 2 becomes "invoice numbers change only inside a transaction with a row lock". Point 3 becomes "money is <code>decimal</code> / <code>numeric(18,2)</code>". Knowing the reason behind each rule lets you defend it when a shortcut looks tempting.</p>
+
+<h3>What we build instead</h3>
+<p>We build <b>three front ends on one backend</b>. All of them get prices, availability and bookings from the same rules and the same database.</p>
+<table>
+<tr><th style="width:20%">Front end</th><th style="width:25%">Who</th><th>Main features</th></tr>
+<tr><td>Back office</td><td>Agency staff</td><td>Catalogue, supplier and sales contracts (with AI intake), bookings and itineraries, billing, treasury, reports, users</td></tr>
+<tr><td>Partner portal + Partner API</td><td>Tour operators, agencies, OTAs</td><td>Search, net prices, book, cancel, vouchers, invoices. API with webhooks. Booking emails read by AI into drafts</td></tr>
+<tr><td>Public site</td><td>Travellers</td><td>Catalogue, availability, indicative prices, quote requests, AI guest assistant (web and WhatsApp)</td></tr>
+</table>
+<p>Managers also get an <b>MCP server</b>, the "manager assistant". It lets an AI client answer questions such as "what did Agadir sell last month?" using read-only tools.</p>
+
+<h2 id="a2">A2. Business vocabulary</h2>
+<p>You cannot model a domain you cannot talk about. These words appear in the client's mouth, in the old database (often in French) and in our code (in English).</p>
+<table>
+<tr><th style="width:22%">Term (French in old system)</th><th>Meaning</th></tr>
+<tr><td><b>Contract</b> — buy (<i>achat</i>) / sell (<i>vente</i>)</td><td>A <b>supplier contract</b> sets what the agency pays a hotel or other supplier. A <b>sales contract</b> sets what a client (tour operator, market) pays the agency. In the new system both are versioned, with one active version per date.</td></tr>
+<tr><td>Season (<i>saison</i>)</td><td>A named set of date ranges with the same price level, for example "High season: 20 Dec–5 Jan, 1 Apr–30 Apr". The old system allowed at most 5–6. The new one allows any number.</td></tr>
+<tr><td>Rate (<i>tarif</i>)</td><td>A price for a room type + board + occupancy in a season, per night or per person.</td></tr>
+<tr><td>Room type, board</td><td>Room type examples: Double, Single, Suite. Board is the meal plan: RO (room only), BB (bed &amp; breakfast), HB (half board), FB (full board), AI (all inclusive).</td></tr>
+<tr><td>Pax, occupancy</td><td>"Pax" means persons. Occupancy is how many adults and children (with ages) share a room.</td></tr>
+<tr><td>Supplement / reduction</td><td>Extra or discount rows: single supplement, 3rd adult reduction, child reduction by age range, gala dinner.</td></tr>
+<tr><td>Promotion</td><td>Early booking (book before a date, get X%), "stay N pay M", long stay, honeymoon. Has stacking ("combinable") rules.</td></tr>
+<tr><td>Allotment (<i>allottement</i>)</td><td>Rooms a hotel reserves for the agency per date. <b>Fixed</b> rooms are paid even if unsold. <b>Elastic</b> rooms are available on request. <b>Release days</b>: unsold rooms go back to the hotel X days before arrival.</td></tr>
+<tr><td>Stop sale</td><td>The hotel says "no more sales for these dates", even inside allotment. The old system had no such concept.</td></tr>
+<tr><td>Net rate, markup, commission</td><td>A net rate is the price a partner pays, before it adds its own margin. A markup is the agency's margin added on top of cost. A commission is a % the agency gives away.</td></tr>
+<tr><td>File (<i>dossier</i>)</td><td>The centre of operations: one trip for one client, with its bookings, itinerary, documents and invoices.</td></tr>
+<tr><td>Booking, service line</td><td>A booking is a client's reservation. A service line is one bookable service (hotel stay, transfer, excursion) with sale price and cost.</td></tr>
+<tr><td>Circuit, itinerary</td><td>A circuit is a pre-configured multi-day tour (template). When it is booked, the template becomes the file's own day-by-day itinerary with real dates.</td></tr>
+<tr><td>Voucher</td><td>A document sent to a supplier: "please provide these services to these guests, we pay". The supplier invoices against it.</td></tr>
+<tr><td>Transfer</td><td>A transport leg: airport → hotel, hotel → hotel, hotel → airport. Has a pick-up time, vehicle type and driver or transport supplier.</td></tr>
+<tr><td>Rooming list</td><td>A list per hotel and arrival date of who sleeps in which room.</td></tr>
+<tr><td>Tour operator (TO), OTA</td><td>Foreign companies that sell the agency's services to travellers. OTA = online travel agency (Expedia, Booking).</td></tr>
+<tr><td>Proforma, invoice, credit note (<i>avoir</i>)</td><td>A proforma is a quote-like document. An invoice, once issued, is immutable. A credit note is the only way to correct an issued invoice.</td></tr>
+<tr><td>Allocation (<i>lettrage</i>)</td><td>Matching a payment to the invoices it pays.</td></tr>
+<tr><td>Aged balance (<i>balance âgée</i>)</td><td>What each client owes, grouped by age (0–30, 31–60, 60+ days).</td></tr>
+<tr><td>Cash session, folio, débours</td><td>A cash session is one day of a cash register, from opening to counting to closing. A folio is the old name for a group of cash vouchers. Débours are expenses advanced, for example by a guide.</td></tr>
+<tr><td>Rep, ticket book (<i>carnet</i>)</td><td>Representatives sell excursions in hotels from paper ticket books and hand the cash in to the cashier.</td></tr>
+<tr><td>MAD</td><td>Moroccan dirham, the agency's base currency. Contracts can also be in EUR, USD or GBP.</td></tr>
+<tr><td>Sage</td><td>The accounting software that receives an export from our system.</td></tr>
+</table>
+
+<h2 id="a3">A3. Your two roles: delivering for a client, and learning</h2>
+<p>This project has two goals that sometimes pull against each other. The client pays for working software. You also want to come out of it as a much stronger engineer. The plan in <code>docs/development-strategy.md</code> builds learning into delivery ("learn just in time"). These habits keep the two goals aligned:</p>
+<ol>
+<li><b>Estimate with learning included.</b> The first slices will be slow because every concept is new. Later slices reuse the same path and go faster. Tell the client this up front, then show it with the bi-weekly demos.</li>
+<li><b>Demo every two weeks on the test environment</b>, using their real contracts and circuits as examples (not as data in the code). A demo catches wrong assumptions while they are cheap to fix. Forward Deployed Engineers live by this habit.</li>
+<li><b>Write decisions down (ADRs).</b> When the client asks "why did you do it this way?" six months from now, the ADR answers, and it protects you too.</li>
+<li><b>Keep the client's assets in the client's name.</b> The cloud subscription, domain names, AI provider account, WhatsApp business account and, ideally, the GitHub organisation should belong to the client, with access granted to you. Agree in writing who owns the code. (This is good practice, not legal advice. Check your contract.)</li>
+<li><b>Never put real data in code, tests or prompts.</b> Use invented hotels and guests. Guest data falls under Moroccan Law 09-08 (CNDP).</li>
+<li><b>Use Claude Code as a tutor, not a replacement.</b> Ask it to explain a concept with an example from this code before it writes the code. Write or review the domain test yourself. Read every diff and ask "why this way?". Let it do the repetitive work (mappings, Helm boilerplate, form plumbing) and spend your own attention on pricing, versions, billing and security.</li>
+<li><b>Explain to learn.</b> After applying a concept, write 5–10 lines in <code>docs/learning/&lt;concept&gt;.md</code> in your own words, with a link to the code. Reread it a month later.</li>
+</ol>
+
+<h2 id="a4">A4. Decisions already made</h2>
+<p>These decisions are recorded as ADRs in <code>docs/adr/</code>. Do not contradict them. To change one, write a new ADR that supersedes it.</p>
+<table>
+<tr><th style="width:7%">ADR</th><th style="width:33%">Decision</th><th>Main reason</th><th style="width:24%">Rejected</th></tr>
+<tr><td>0001</td><td>Modular monolith with Clean Architecture; each host is its own container</td><td>Small team, tightly connected rules; microservices add cost with no benefit</td><td>Microservices; layers without module borders</td></tr>
+<tr><td>0002</td><td>PostgreSQL only (EF Core + Npgsql), pgvector, managed in production</td><td>No licence; <code>daterange</code> + exclusion constraints; <code>jsonb</code>; vectors in the same DB</td><td>SQL Server; separate vector DB</td></tr>
+<tr><td>0003</td><td>React + Vite for back office and portal; Next.js for public site; generated API client</td><td>Data-heavy screens; static files on Kubernetes; server rendering for SEO</td><td>Blazor Server</td></tr>
+<tr><td>0004</td><td>Managed Kubernetes in Europe near Morocco; managed PostgreSQL and Redis; Helm; GitHub Actions</td><td>No cluster/DB operations for a small team; backups and point-in-time recovery</td><td>Self-managed cluster</td></tr>
+<tr><td>0005</td><td>Start with an empty system; no import from the old one</td><td>Old data has no keys, duplicate contract versions, float amounts</td><td>Importer from SQL Server</td></tr>
+<tr><td>0006</td><td>AI drafts, humans approve; AI account cannot call approve endpoints</td><td>Contracts and money need a responsible person; AI can be wrong or manipulated</td><td>Auto-approval above a confidence score</td></tr>
+</table>
+
+<h3>The rules card (from CLAUDE.md)</h3>
+<div class="cols">
+<div class="box note"><span class="box-t">Architecture</span><ul class="small">
+<li>Layers: Domain → Application → Infrastructure → hosts. Dependencies point inward.</li>
+<li>Domain uses no framework (no EF Core, no ASP.NET). Application never references Infrastructure.</li>
+<li>Modules are folders in each layer. They talk through application interfaces or domain events only.</li>
+<li>Rules live in entities and value objects.</li>
+<li>One repository per aggregate. No generic repository, no MediatR or AutoMapper.</li>
+<li>Expected failures return a <code>Result</code>. Exceptions are for bugs and infrastructure.</li>
+<li>Architecture tests enforce all of this.</li></ul></div>
+<div class="box note"><span class="box-t">Data</span><ul class="small">
+<li>Money: <code>decimal</code> / <code>numeric(18,2)</code>. Rates: <code>numeric(18,6)</code>. Never float.</li>
+<li>Stay dates: <code>DateOnly</code> / <code>date</code>. Moments: <code>DateTimeOffset</code> / <code>timestamptz</code> in UTC. Use <code>TimeProvider</code>, never <code>DateTime.Now</code>.</li>
+<li>Primary keys, foreign keys, and check, unique and exclusion constraints everywhere.</li>
+<li>snake_case names.</li>
+<li>Invoice numbers, allotment and payments change only in transactions with row locks, never from cache.</li>
+<li>Contracts, circuit templates and vouchers are versioned.</li></ul></div>
+</div>
+<div class="cols">
+<div class="box note"><span class="box-t">AI</span><ul class="small">
+<li>AI creates drafts only. A logged-in human approves, and the API enforces it.</li>
+<li>The guest assistant sees published, public data only.</li>
+<li>MCP tools are read-only. No free-form SQL.</li>
+<li>Every AI feature has an eval set in <code>tests/evals/</code>.</li></ul></div>
+<div class="box note"><span class="box-t">Working</span><ul class="small">
+<li>Thin vertical slices: domain test first.</li>
+<li>One change = one pull request.</li>
+<li>Run <code>dotnet test</code> and front-end tests before calling a task done.</li>
+<li>Ask before adding a dependency or project, or changing an ADR.</li>
+<li>No real data or secrets anywhere.</li></ul></div>
+</div>
+
+<!-- ===================================================== PART B -->
+<h1 class="part" id="part-b"><span class="n">Part B</span>The process</h1>
+<p class="part-intro">How the work is ordered (phases and gates), how one slice is built, what a working day looks like, and when a task counts as done.</p>
+
+<h2 id="b1">B1. The roadmap: seven phases, each with a gate</h2>
+<p>The phases follow the dependencies between modules. You cannot price without contracts, book without prices, or invoice without bookings. A phase ends only when its <b>gate</b> can be shown to the client on the test environment. "Code complete" does not count.</p>
+<div class="diagram">
+<svg viewBox="0 0 700 150" width="700" height="150" font-family="-apple-system,Helvetica Neue,sans-serif">
+  <g font-size="10.5" text-anchor="middle">
+    <g><rect x="2" y="20" width="92" height="56" rx="6" fill="#fbeee9" stroke="#b4452a"/><text x="48" y="40" font-weight="700" fill="#b4452a">1 Skeleton</text><text x="48" y="56" fill="#1d2330" font-size="9">solution, CI/CD,</text><text x="48" y="68" fill="#1d2330" font-size="9">K8s, sign-in</text></g>
+    <g><rect x="102" y="20" width="92" height="56" rx="6" fill="#f4f6f9" stroke="#8a93a3"/><text x="148" y="40" font-weight="700">2 Contracts</text><text x="148" y="56" font-size="9">catalogue, versions,</text><text x="148" y="68" font-size="9">pricing engine</text></g>
+    <g><rect x="202" y="20" width="92" height="56" rx="6" fill="#f4f6f9" stroke="#8a93a3"/><text x="248" y="40" font-weight="700">3 Bookings</text><text x="248" y="56" font-size="9">files, itineraries,</text><text x="248" y="68" font-size="9">vouchers, transfers</text></g>
+    <g><rect x="302" y="20" width="92" height="56" rx="6" fill="#f4f6f9" stroke="#8a93a3"/><text x="348" y="40" font-weight="700">4 Billing</text><text x="348" y="56" font-size="9">invoices, payments,</text><text x="348" y="68" font-size="9">treasury, ledger</text></g>
+    <g><rect x="402" y="20" width="92" height="56" rx="6" fill="#f4f6f9" stroke="#8a93a3"/><text x="448" y="40" font-weight="700">5 Channels</text><text x="448" y="56" font-size="9">public site, portal,</text><text x="448" y="68" font-size="9">partner API</text></g>
+    <g><rect x="502" y="20" width="92" height="56" rx="6" fill="#f4f6f9" stroke="#8a93a3"/><text x="548" y="40" font-weight="700">6 AI</text><text x="548" y="56" font-size="9">contract intake,</text><text x="548" y="68" font-size="9">guest asst., MCP</text></g>
+    <g><rect x="602" y="20" width="92" height="56" rx="6" fill="#e9f4ed" stroke="#2f6b45"/><text x="648" y="40" font-weight="700" fill="#2f6b45">7 Go-live</text><text x="648" y="56" font-size="9">one branch,</text><text x="648" y="68" font-size="9">then the second</text></g>
+  </g>
+  <g font-size="8.6" text-anchor="middle" fill="#5b6476">
+    <text x="48" y="96">Gate: a city typed</text><text x="48" y="108">in the browser is</text><text x="48" y="120">saved on test cluster</text>
+    <text x="148" y="96">Prices match the</text><text x="148" y="108">contracting team's</text><text x="148" y="120">worked examples</text>
+    <text x="248" y="96">A real circuit gives</text><text x="248" y="108">correct vouchers</text><text x="248" y="120">and transfers</text>
+    <text x="348" y="96">One month closed</text><text x="348" y="108">end to end on</text><text x="348" y="120">test data</text>
+    <text x="448" y="96">A partner books</text><text x="448" y="108">through the</text><text x="448" y="120">sandbox API</text>
+    <text x="548" y="96">Each AI feature</text><text x="548" y="108">reaches its</text><text x="548" y="120">test-set target</text>
+    <text x="648" y="96">Client signs off</text><text x="648" y="108">after the</text><text x="648" y="120">pilot weeks</text>
+  </g>
+  <text x="2" y="12" font-size="9" fill="#5b6476">You are here →</text>
+  <text x="350" y="145" font-size="8.6" text-anchor="middle" fill="#5b6476">AI contract intake may start alongside phase 2 if typing contracts becomes the bottleneck.</text>
+</svg>
+</div>
+<p>Inside phase 1 the first slice is the <b>walking skeleton</b>: "create a city and list cities". The business logic is trivial, but the slice crosses every layer and is deployed to Kubernetes. Infrastructure problems (sign-in, migrations, containers, networking) then show up in week one rather than at go-live. Part D plans this slice in detail. The second slice, the first real one, is a <b>hotel contract with one season and one rate, and the pricing engine returning a price for a stay</b>.</p>
+
+<h2 id="b2">B2. How one vertical slice is built</h2>
+<p>A <b>vertical slice</b> is one feature built through every layer, from database to screen to deployment, before the next feature starts. The alternative, "horizontal" layering (all tables first, then all services, then all screens), delays the first working feature by months and hides integration problems until the end.</p>
+<p>Inside each slice the order is fixed:</p>
+<table>
+<tr><th style="width:4%">#</th><th style="width:20%">Step</th><th>What you produce</th><th style="width:30%">Why in this order</th></tr>
+<tr><td>1</td><td>Domain test</td><td>A failing unit test that states the business rule ("a city name cannot be empty")</td><td>Forces you to decide the rule before writing code. Runs in milliseconds.</td></tr>
+<tr><td>2</td><td>Domain code</td><td>Entity / value object that makes the test pass</td><td>The rule lives in one place, with no framework.</td></tr>
+<tr><td>3</td><td>Application</td><td>Use case (command or query) + interfaces it needs, tested with fakes</td><td>Orchestration without a database.</td></tr>
+<tr><td>4</td><td>Infrastructure</td><td>EF Core mapping, migration, repository; integration test against real PostgreSQL</td><td>Proves constraints and mapping.</td></tr>
+<tr><td>5</td><td>API</td><td>Endpoints, permissions, OpenAPI, logs</td><td>Thin: it only translates HTTP to use cases.</td></tr>
+<tr><td>6</td><td>React screen</td><td>Page using the generated API client</td><td>The user can see it.</td></tr>
+<tr><td>7</td><td>Helm values</td><td>Config / secrets / routes the feature needs</td><td>It runs on the test cluster.</td></tr>
+</table>
+
+<h2 id="b3">B3. Your daily loop</h2>
+<ol>
+<li><b>Pick one small task</b> from the current slice, half a day to two days of work.</li>
+<li><b>Create a branch</b> from an up-to-date default branch.</li>
+<li><b>Explain first.</b> If the task introduces a new concept, read its card in Part E and ask Claude Code to explain it with this code.</li>
+<li><b>Write the domain test</b> (or review the one Claude proposes), then the code.</li>
+<li><b>Run all tests locally</b>, then commit with a message that says <i>why</i>.</li>
+<li><b>Push and open a pull request.</b> CI runs build, unit, integration and architecture tests.</li>
+<li><b>Review your own diff</b> against the definition of done (B4), then merge.</li>
+<li>CD <b>deploys to the test environment</b> once it exists (end of slice 1). Check the feature there.</li>
+</ol>
+<pre><span class="c"># one task, start to finish</span>
+git switch master &amp;&amp; git pull
+git switch -c feat/city-domain               <span class="c"># branch name: type/short-topic</span>
+<span class="c"># ... write test, then code ...</span>
+dotnet test backend/Agency.slnx                <span class="c"># all tests green</span>
+git add -p                                    <span class="c"># stage hunk by hunk: you read every change</span>
+git commit -m "Add City entity with name rules"
+git push -u origin feat/city-domain
+gh pr create --fill                           <span class="c"># opens the pull request on GitHub</span>
+gh pr checks --watch                          <span class="c"># wait for CI</span>
+gh pr merge --squash --delete-branch          <span class="c"># one clean commit on master</span></pre>
+<div class="box note"><span class="box-t">Size of a pull request</span><p>Aim for something you can review in 15 minutes: usually under ~400 changed lines, excluding generated files (migrations, API client). If a PR grows past that, split it. Example: "domain + tests" in one PR, "EF mapping + migration" in the next.</p></div>
+
+<h3>Working with Claude Code on a task</h3>
+<p>This loop comes from <code>START-HERE.md</code>:</p>
+<ol>
+<li>"Explain &lt;concept&gt; with an example from this code" (before any code).</li>
+<li>You write or review the domain test.</li>
+<li>Claude implements. You read the diff and run the tests.</li>
+<li>Ask "why this way?" about anything unfamiliar, and put the answer in a learning note.</li>
+<li>Commit, push, open the PR, merge, and move to the next task.</li>
+<li>If a decision was made, ask for an ADR in the same PR.</li>
+</ol>
+<p>Conversations are not memory. The repository is. Anything that must survive a session goes into <code>CLAUDE.md</code>, an ADR, <code>docs/analysis-and-design.md</code> or a learning note.</p>
+
+<h2 id="b4">B4. Definition of done</h2>
+<p>A task is done only when every box is ticked. Each item says how to check it.</p>
+<ul class="check">
+<li><b>Tests pass</b>: <code>dotnet test backend/Agency.slnx</code> and <code>pnpm -C frontend -r test</code> are green locally and in CI, including architecture tests.</li>
+<li><b>No warnings</b>: the build treats warnings as errors (<code>TreatWarningsAsErrors</code> in <code>Directory.Build.props</code>), so a warning fails the build. Same for the TypeScript type check and lint.</li>
+<li><b>OpenAPI updated</b>: new or changed endpoints appear in the OpenAPI document with request/response types and error codes, and the generated front-end client is regenerated.</li>
+<li><b>Permissions checked</b>: every endpoint has an authorization requirement. An integration test shows that an anonymous call gets <code>401</code> and a user without the role gets <code>403</code>.</li>
+<li><b>Meaningful logs</b>: important actions log one structured line with IDs (no personal data, no secrets).</li>
+<li><b>Works on the test cluster</b>: after deployment, you have clicked through it there.</li>
+<li><b>ADR if a decision was made</b>, and <code>analysis-and-design.md</code> updated if the design changed.</li>
+</ul>
+
+<h2 id="b5">B5. Writing an ADR</h2>
+<p>An <b>Architecture Decision Record</b> is a short file that records one important decision: what was decided, why, and what was rejected. It is cheap to write and saves hours of "why is it like this?" later. Write one whenever you choose between real alternatives that would be costly to change: a library, a pattern, a hosting choice, a security approach. Do not write one for code style.</p>
+<pre>docs/adr/0007-guid-v7-primary-keys.md
+
+# ADR 0007: GUID v7 primary keys
+
+Status: Accepted · Date: 2026-10-20
+
+## Decision
+Entities use Guid v7 identifiers generated in the application (Guid.CreateVersion7()),
+stored as PostgreSQL uuid.
+
+## Why
+The ID exists before saving (useful for events and links); IDs cannot be guessed or counted
+by partners; v7 is time-ordered, so inserts stay index-friendly unlike random v4.
+
+## Rejected alternatives
+bigint identity columns (exposes counts, needs a DB round trip for the ID); Guid v4 (random index order).</pre>
+<p>To change a decision, add a new ADR with <code>Status: Accepted · Supersedes 0007</code> and set the old one to <code>Superseded by 00xx</code>. Never edit history.</p>
+
+<h2 id="b6">B6. Keeping documentation alive</h2>
+<ul>
+<li>When the design changes, update <code>docs/analysis-and-design.md</code> <b>in the same PR</b> as the code.</li>
+<li>When a useful command appears (run tests, start services, deploy), add it to the "Commands" section of <code>CLAUDE.md</code>.</li>
+<li>When a client question is answered, tick it in the open-questions list and record the answer (with the date and who answered).</li>
+<li>This handbook is generated from <code>docs/handbook/handbook.html</code>. Update it at the end of each slice with the concepts that slice introduced.</li>
+</ul>
+
+<!-- ===================================================== PART C -->
+<h1 class="part" id="part-c"><span class="n">Part C</span>What you should know and prepare</h1>
+<p class="part-intro">The state of your machine and repository today, what the repository docs leave out, the decisions still open for slice 1, and the questions to put to the client.</p>
+
+<h2 id="c1">C1. Your machine (checked 11 October 2026)</h2>
+<table>
+<tr><th style="width:18%">Tool</th><th style="width:20%">Status</th><th>Notes / how to install</th></tr>
+<tr><td>.NET SDK</td><td>✅ 10.0.302</td><td>.NET 10 is the current LTS (released November 2025, supported until November 2028). This is the "current .NET LTS" that <code>CLAUDE.md</code> asks for. Pin it with a <code>global.json</code> in task 0.</td></tr>
+<tr><td>Docker</td><td>✅ 29.5.3</td><td>Docker Desktop must be <i>running</i> for <code>docker compose</code>, Testcontainers and kind.</td></tr>
+<tr><td>Node.js</td><td>✅ v26.3.1</td><td>Node 26 is the "Current" release line and is scheduled to become LTS at the end of October 2026, so it is fine to keep. Pin the version in <code>frontend/package.json</code> (<code>engines</code>) and <code>.nvmrc</code> so CI uses the same one.</td></tr>
+<tr><td>pnpm</td><td>❌ missing</td><td><code>brew install pnpm</code> or <code>npm install -g pnpm</code>. Recent Node versions no longer bundle Corepack, so the old <code>corepack enable</code> route may not be available.</td></tr>
+<tr><td>git, gh</td><td>✅ 2.54 / 2.96</td><td>Run <code>gh auth login</code> once, then <code>gh repo create</code> to create the private GitHub repository.</td></tr>
+<tr><td>kubectl</td><td>✅ 1.34</td><td>OK.</td></tr>
+<tr><td>kind</td><td>❌ missing</td><td><code>brew install kind</code>. Needed from task 11 (local Kubernetes).</td></tr>
+<tr><td>Helm</td><td>❌ missing</td><td><code>brew install helm</code>. Needed from task 11.</td></tr>
+<tr><td>k9s (optional)</td><td>—</td><td><code>brew install k9s</code>. A terminal UI to look inside a cluster; very helpful while learning.</td></tr>
+<tr><td>DB client</td><td>—</td><td>DBeaver or pgAdmin, to look at tables, constraints and data yourself.</td></tr>
+<tr><td>Claude Code + VS Code</td><td>✅</td><td>Also install the C# Dev Kit extension in VS Code (or use Rider).</td></tr>
+</table>
+
+<h2 id="c2">C2. Things found in the repository today</h2>
+<table>
+<tr><th style="width:28%">Finding</th><th>Why it matters / what to do</th></tr>
+<tr><td>No Git remote yet; one commit on <code>master</code></td><td>Create the private GitHub repository and push before task 2 (CI needs it).</td></tr>
+<tr><td>Default branch is <code>master</code>, but the docs say "every merge to <b>main</b> deploys"</td><td>Choose one name before writing the CI workflow, because the workflow triggers on the branch name. Recommendation: rename to <code>main</code> (<code>git branch -m master main</code>, then set it as default on GitHub) so the docs stay true.</td></tr>
+<tr><td><code>._*</code> files next to every file</td><td>macOS writes these "AppleDouble" files when the project sits on a drive that is not formatted as APFS/HFS+ (your <code>/Volumes/saved</code>). Add <code>._*</code> and <code>.DS_Store</code> to <code>.gitignore</code> so they are never committed. Consider keeping the repository on the internal disk: Docker bind mounts and file watchers (Vite, <code>dotnet watch</code>) are faster and more reliable there.</td></tr>
+<tr><td><code>CLAUDE.md</code> says <code>dotnet test backend/Agency.sln</code></td><td>.NET 10 creates solutions in the new XML format <code>Agency.slnx</code> by default. Update the command in <code>CLAUDE.md</code> when the solution is created (task 1).</td></tr>
+<tr><td>"Commands" section of <code>CLAUDE.md</code> is a placeholder</td><td>Fill it in as tasks add commands (compose, migrations, client generation, kind).</td></tr>
+<tr><td>Design doc mentions diagrams "in the shared doc"</td><td>Those diagrams are not in the repository. If you have the shared doc, export the diagrams to <code>docs/diagrams/</code> so the repo is self-contained.</td></tr>
+</table>
+
+<div class="box warn"><span class="box-t">Gotcha · Ingress NGINX is retired</span>
+<p>The design and the concept tables say "Ingress controller". The most common one, the community <b>ingress-nginx</b> controller, was announced as retiring in November 2025, with maintenance ending in March 2026. The Kubernetes <b>Ingress API</b> itself still works but is frozen. Its successor is the <b>Gateway API</b>. Many tutorials still use ingress-nginx, so do not copy them blindly. You still need to understand Ingress (card E6), but choose a maintained controller: your cloud's managed option, Traefik, or a Gateway API implementation. Record the choice in an ADR at task 11. <i>Check the current status of the project before you choose.</i></p></div>
+
+<h2 id="c3">C3. Decisions to make during slice 1</h2>
+<p>The docs leave these open. Each one is a real choice. <code>CLAUDE.md</code> says to ask before adding a dependency, so each library below needs your "yes", and the marked ones need an ADR. My recommendation is given with a short reason so you can disagree on the merits.</p>
+<table>
+<tr><th style="width:3%">#</th><th style="width:17%">Decision</th><th style="width:25%">Options</th><th>Recommendation and why</th><th style="width:6%">ADR</th><th style="width:7%">Task</th></tr>
+<tr><td>1</td><td>Default branch name</td><td><code>main</code> / keep <code>master</code></td><td><b>Rename to <code>main</code></b>, to match the docs and modern defaults.</td><td>—</td><td>0</td></tr>
+<tr><td>2</td><td>Build settings</td><td><code>Directory.Build.props</code>, Central Package Management, <code>global.json</code></td><td><b>Yes to all.</b> Nullable on, warnings as errors, one place for package versions. This is what makes "no warnings" enforceable.</td><td>—</td><td>1</td></tr>
+<tr><td>3</td><td>Test libraries</td><td>xUnit v3 · assertions: built-in, Shouldly, FluentAssertions</td><td><b>xUnit v3 with plain <code>Assert</code></b>, optionally Shouldly. FluentAssertions v8+ needs a paid licence for commercial work.</td><td>—</td><td>1</td></tr>
+<tr><td>4</td><td>Architecture tests</td><td>NetArchTest.Rules, ArchUnitNET</td><td><b>ArchUnitNET</b> if it is still actively maintained (check its last release). NetArchTest is simpler but saw little maintenance for years. Either satisfies <code>CLAUDE.md</code>.</td><td>—</td><td>1</td></tr>
+<tr><td>5</td><td>Input validation</td><td>.NET 10 built-in minimal-API validation, FluentValidation</td><td><b>Built-in</b> (<code>AddValidation()</code> + data annotations on request records). No dependency. Business rules stay in the domain anyway.</td><td>—</td><td>6</td></tr>
+<tr><td>6</td><td>Primary keys</td><td>Guid v7 (app-generated), <code>bigint identity</code></td><td><b>Guid v7</b> (<code>Guid.CreateVersion7()</code>). The ID is known before saving, IDs cannot be counted by partners, and v7 IDs are time-ordered so indexes stay efficient.</td><td>✔</td><td>3</td></tr>
+<tr><td>7</td><td>Case/accent-insensitive names</td><td>ICU non-deterministic collation, <code>citext</code>, lower() index</td><td><b>ICU collation</b> <code>und-u-ks-level1</code>. "Fès", "FES" and "fes" are then equal for unique checks. <code>citext</code> ignores case only, not accents.</td><td>✔</td><td>5</td></tr>
+<tr><td>8</td><td>snake_case mapping</td><td><code>EFCore.NamingConventions</code> package, manual names</td><td><b>The package</b> (one line: <code>UseSnakeCaseNamingConvention()</code>). Writing every name by hand is error-prone.</td><td>—</td><td>5</td></tr>
+<tr><td>9</td><td>Identity provider (who signs users in)</td><td>Keycloak (self-hosted), Microsoft Entra ID, ASP.NET Core Identity + OpenIddict, Auth0</td><td><b>Keycloak in Docker for slice 1.</b> It is free, standard OpenID Connect, and also handles partners (client credentials) later. If the client's staff already use Microsoft 365, Entra ID may be better for staff in production. That is a client question (C4). Note that ASP.NET Core Identity alone stores users but does not issue OIDC tokens.</td><td>✔</td><td>8</td></tr>
+<tr><td>10</td><td>Where browser tokens live</td><td>SPA with PKCE (tokens in the browser), BFF (server keeps tokens, browser gets a cookie)</td><td><b>SPA + PKCE for slice 1</b>, as the docs plan, with tokens kept in memory or session storage. Then review a BFF before go-live, because current OAuth guidance for browser apps prefers it.</td><td>✔</td><td>8–10</td></tr>
+<tr><td>11</td><td>Same origin for UI and API</td><td>Separate hosts (needs CORS), one host with <code>/api</code> path routing</td><td><b>One host, <code>/api</code> routed to the API</b>, by the Vite dev proxy locally and the Ingress/Gateway in the cluster. No CORS configuration, fewer surprises.</td><td>—</td><td>9, 11</td></tr>
+<tr><td>12</td><td>OpenAPI UI</td><td>Scalar, Swagger UI</td><td><b>Scalar</b> (or Swagger UI). .NET 10 generates the document itself (<code>Microsoft.AspNetCore.OpenApi</code>). Only the viewer is a package. Enable it in development and test only.</td><td>—</td><td>6</td></tr>
+<tr><td>13</td><td>Front-end API client</td><td>openapi-typescript + openapi-fetch, orval, Kiota</td><td><b>openapi-typescript + openapi-fetch</b>: generated types plus a tiny typed <code>fetch</code>. You write the TanStack Query hooks yourself, which is better for learning. orval generates the hooks too, if you want less code later.</td><td>✔</td><td>9</td></tr>
+<tr><td>14</td><td>UI component library</td><td>MUI (+ MUI X DataGrid), Ant Design, shadcn/ui + TanStack Table</td><td><b>MUI or Ant Design</b>: both have strong tables and forms for a data-heavy back office. shadcn/ui gives more design control but more assembly work. Pick one and stay with it.</td><td>✔</td><td>9</td></tr>
+<tr><td>15</td><td>Logging</td><td>Built-in <code>ILogger</code> JSON console, Serilog</td><td><b>Built-in</b> for now. Add OpenTelemetry in phase 3 as planned.</td><td>—</td><td>6</td></tr>
+<tr><td>16</td><td>Local Kubernetes</td><td>kind, k3d</td><td><b>kind</b>, as the docs say.</td><td>—</td><td>11</td></tr>
+<tr><td>17</td><td>Ingress / Gateway</td><td>Cloud's managed option, Traefik, Gateway API implementation</td><td><b>Decide at task 11</b>, given the ingress-nginx retirement (box above). Prefer what the chosen cloud supports natively.</td><td>✔</td><td>11</td></tr>
+<tr><td>18</td><td>Container registry</td><td>GitHub Container Registry (GHCR), the cloud's registry (e.g. ACR)</td><td><b>GHCR</b> to start: free with GitHub, and CI can push with the built-in token. Move to the cloud's registry if the client prefers.</td><td>—</td><td>12</td></tr>
+<tr><td>19</td><td>Cloud and test cluster</td><td>Azure AKS (doc's first choice), OVHcloud, Scaleway</td><td><b>Ask the client first</b> (who pays, data location). ADR 0004 already fixes "managed, Europe, near Morocco". This choice picks the provider.</td><td>✔</td><td>12</td></tr>
+</table>
+
+<h2 id="c4">C4. Questions for the client</h2>
+<p>These come from the open-questions list in <code>analysis-and-design.md</code>, plus new ones raised by slice 1, grouped by <b>when the answer is needed</b>. Ask the first group now.</p>
+<div class="box ask"><span class="box-t">Ask the client · needed during slice 1</span>
+<ol>
+<li><b>Who owns and pays for the accounts?</b> Cloud subscription, domain name, GitHub organisation, container registry. The test environment has a monthly cost from day one.</li>
+<li><b>Where may data be hosted?</b> Is storing guest data in an EU region acceptable under Law 09-08 / CNDP, or must it stay in Morocco? (ADR 0004 asks for this confirmation before choosing the region.)</li>
+<li><b>How do staff sign in today?</b> Do they have Microsoft 365 or Google Workspace accounts? This decides the production identity provider.</li>
+<li><b>Which language must the back office use?</b> French? Arabic? Several? This affects screens from slice 1 onward (i18n is cheaper from the start).</li>
+<li><b>Domain names</b> for the test and production environments (for example <code>backoffice.test.&lt;domain&gt;</code>).</li>
+<li><b>Cities:</b> only Moroccan cities, or also cities abroad? Is a city name unique on its own, or per country? (This defines slice 1's unique rule.)</li>
+<li>Can they share the <b>"factmarge"</b> API/web project referenced in the old solution?</li>
+</ol></div>
+<div class="box ask"><span class="box-t">Ask the client · before phase 2 (contracts and pricing)</span>
+<ul class="small">
+<li>Which VAT scheme applies (on margin or on full price), and must VAT and tourist tax appear on client invoices?</li>
+<li>More than 5 seasons, weekday prices, minimum stays?</li>
+<li>Should stop sales and release dates block bookings automatically?</li>
+<li>Sales prices: mostly a markup on supplier rates, or negotiated net rates per tour operator? Are supplier promotions passed on by default?</li>
+<li>Minimum margin: at what level is it a warning, and when does it block?</li>
+<li>Who may approve contract versions: one person per branch, or a central contracting team?</li>
+<li>Are Agadir and Marrakech still the only branches, with separate number series?</li>
+<li>Can the contracting team provide <b>worked pricing examples</b>? These are the gate for phase 2 and your most valuable tests.</li>
+</ul></div>
+<div class="box ask"><span class="box-t">Ask the client · later phases</span>
+<ul class="small">
+<li><b>Phase 3:</b> own vehicles and drivers, transport suppliers, or both? How many circuit templates, and who can describe each day? Send vouchers automatically once confirmed, or after an operator check?</li>
+<li><b>Phase 4:</b> which banks, and can they export statements and import transfer files? Which payment amounts need a manager's approval? Do reps still use paper ticket books?</li>
+<li><b>Phase 5:</b> which partners would connect by API first, and in what format (XML, OpenTravel)? Credit limits and payment terms today?</li>
+<li><b>Phase 7:</b> switch date, which branch goes first, and are running files finished in the old system?</li>
+<li><b>All phases:</b> which reports do staff and managers need daily, weekly and monthly?</li>
+</ul></div>
+
+<h2 id="c5">C5. Costs and accounts to expect</h2>
+<p>None of these is needed on day one, but the client should not be surprised by them. Get current prices from each provider, because they change.</p>
+<table>
+<tr><th style="width:26%">Item</th><th style="width:18%">From</th><th>Note</th></tr>
+<tr><td>Managed Kubernetes cluster (test)</td><td>Slice 1, task 12</td><td>Smallest node pool is enough for test. Production comes later.</td></tr>
+<tr><td>Managed PostgreSQL (test, then production)</td><td>Slice 1, task 12</td><td>Production needs backups and point-in-time recovery (ADR 0004).</td></tr>
+<tr><td>Domain + DNS, TLS certificates</td><td>Slice 1, task 12</td><td>Certificates are free with Let's Encrypt via cert-manager.</td></tr>
+<tr><td>GitHub (private repo, Actions minutes, GHCR)</td><td>Now</td><td>Free tiers are usually enough at first.</td></tr>
+<tr><td>Managed Redis</td><td>Phase 3</td><td>Cache and Data Protection keys.</td></tr>
+<tr><td>Object storage</td><td>Phase 2–3</td><td>Contract files, generated PDFs.</td></tr>
+<tr><td>LLM API</td><td>Phase 6 (or earlier for contract intake)</td><td>Use a contract that excludes training on the client's data.</td></tr>
+<tr><td>WhatsApp Business Platform</td><td>Phase 5–6</td><td>Verified business, dedicated number, per-message pricing.</td></tr>
+<tr><td>PDF library licence</td><td>Phase 3</td><td>For example QuestPDF: check which licence tier applies to the client's revenue.</td></tr>
+</table>
+
+<!-- ===================================================== PART D -->
+<h1 class="part" id="part-d"><span class="n">Part D</span>Slice 1: the walking skeleton</h1>
+<p class="part-intro">"Create a city and list cities", built through every layer and deployed. The business rule is tiny on purpose, so all your attention goes to the technical path that every later feature will reuse.</p>
+
+<h2 id="d1">D1. Goal and finish line</h2>
+<div class="box ok"><span class="box-t">Done when</span><p>A signed-in admin types a city name in the browser, on the <b>test cluster</b>, and the city appears as a row in PostgreSQL. Every later feature reuses this exact path.</p></div>
+<p>The rule for the city comes from <code>development-strategy.md</code>: <b>the name is not empty and is unique</b>. This handbook adds two details you should confirm: names are trimmed and at most 100 characters long, and uniqueness ignores case and accents ("Fès" = "fes").</p>
+<div class="diagram">
+<svg viewBox="0 0 700 250" width="700" height="250" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="10">
+  <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5b6476"/></marker></defs>
+  <rect x="10" y="85" width="110" height="60" rx="6" fill="#eaf1f8" stroke="#2c5d8f"/>
+  <text x="65" y="108" text-anchor="middle" font-weight="700" fill="#2c5d8f">Browser</text>
+  <text x="65" y="122" text-anchor="middle">React SPA</text><text x="65" y="135" text-anchor="middle" font-size="8.5">Cities page</text>
+  <rect x="14" y="10" width="102" height="44" rx="6" fill="#fdf4e1" stroke="#8a5a00"/>
+  <text x="65" y="28" text-anchor="middle" font-weight="700" fill="#8a5a00">Identity provider</text><text x="65" y="42" text-anchor="middle" font-size="8.5">Keycloak (OIDC)</text>
+  <line x1="65" y1="85" x2="65" y2="56" stroke="#5b6476" marker-end="url(#ar)"/>
+  <text x="72" y="74" font-size="8" fill="#5b6476">1 sign in (PKCE)</text>
+  <rect x="160" y="20" width="520" height="215" rx="10" fill="none" stroke="#8a93a3" stroke-dasharray="5 4"/>
+  <text x="172" y="36" font-weight="700" fill="#5b6476">Kubernetes cluster · namespace agency-test</text>
+  <rect x="180" y="85" width="105" height="60" rx="6" fill="#f4f6f9" stroke="#8a93a3"/>
+  <text x="232" y="106" text-anchor="middle" font-weight="700">Ingress / Gateway</text>
+  <text x="232" y="120" text-anchor="middle" font-size="8.5">HTTPS (cert-manager)</text><text x="232" y="132" text-anchor="middle" font-size="8.5">/ → web · /api → api</text>
+  <line x1="120" y1="115" x2="178" y2="115" stroke="#5b6476" marker-end="url(#ar)"/>
+  <text x="126" y="108" font-size="8" fill="#5b6476">2 HTTPS</text><text x="126" y="128" font-size="8" fill="#5b6476">+ token</text>
+  <rect x="320" y="52" width="130" height="50" rx="6" fill="#fff" stroke="#8a93a3"/>
+  <text x="385" y="72" text-anchor="middle" font-weight="700">web Deployment</text><text x="385" y="86" text-anchor="middle" font-size="8.5">nginx serving built SPA</text>
+  <rect x="320" y="125" width="130" height="60" rx="6" fill="#fbeee9" stroke="#b4452a"/>
+  <text x="385" y="145" text-anchor="middle" font-weight="700" fill="#b4452a">api Deployment</text><text x="385" y="159" text-anchor="middle" font-size="8.5">Agency.BackOffice</text><text x="385" y="171" text-anchor="middle" font-size="8.5">probes · JSON logs</text>
+  <line x1="285" y1="105" x2="318" y2="80" stroke="#5b6476" marker-end="url(#ar)"/>
+  <line x1="285" y1="125" x2="318" y2="150" stroke="#5b6476" marker-end="url(#ar)"/>
+  <rect x="320" y="195" width="130" height="32" rx="6" fill="#fff" stroke="#8a93a3"/>
+  <text x="385" y="215" text-anchor="middle" font-size="9"><tspan font-weight="700">migrator Job</tspan> (before release)</text>
+  <rect x="490" y="125" width="120" height="44" rx="6" fill="#fff" stroke="#8a93a3"/>
+  <text x="550" y="144" text-anchor="middle" font-weight="700">Secret</text><text x="550" y="157" text-anchor="middle" font-size="8.5">connection string</text>
+  <line x1="490" y1="147" x2="452" y2="152" stroke="#8a93a3" stroke-dasharray="3 3"/>
+  <rect x="600" y="190" width="90" height="40" rx="6" fill="#e9f4ed" stroke="#2f6b45"/>
+  <text x="645" y="207" text-anchor="middle" font-weight="700" fill="#2f6b45">PostgreSQL</text><text x="645" y="220" text-anchor="middle" font-size="8.5">managed service</text>
+  <line x1="450" y1="170" x2="598" y2="205" stroke="#5b6476" marker-end="url(#ar)"/>
+  <text x="505" y="201" font-size="8" fill="#5b6476">3 insert city</text>
+  <line x1="450" y1="211" x2="598" y2="214" stroke="#8a93a3" marker-end="url(#ar)"/>
+  <rect x="490" y="52" width="160" height="50" rx="6" fill="#fff" stroke="#8a93a3"/>
+  <text x="570" y="72" text-anchor="middle" font-weight="700">GitHub Actions</text><text x="570" y="86" text-anchor="middle" font-size="8.5">build · test · push images · helm</text>
+  <line x1="490" y1="77" x2="452" y2="77" stroke="#8a93a3" stroke-dasharray="3 3" marker-end="url(#ar)"/>
+</svg>
+<div class="cap">Figure D1 — The request path the walking skeleton proves. The API pod checks the token with the identity provider's public keys. PostgreSQL sits outside the cluster as a managed service.</div>
+</div>
+
+<h2 id="d2">D2. Repository layout after slice 1</h2>
+<pre>agency/
+  .github/workflows/ci.yml        build + test on every PR
+  .github/workflows/cd.yml        images + deploy to test on merge
+  backend/
+    Agency.slnx
+    Directory.Build.props         Nullable, TreatWarningsAsErrors, LangVersion
+    Directory.Packages.props      every package version in one place
+    global.json                   pins the .NET SDK
+    src/
+      Agency.Domain/Catalogue/City.cs  + Common/Result.cs, Error.cs
+      Agency.Application/Catalogue/CreateCity.cs, ListCities.cs, ICityRepository.cs
+      Agency.Infrastructure/Persistence/AgencyDbContext.cs, Configurations/, Migrations/
+      Agency.BackOffice/Program.cs, Endpoints/CityEndpoints.cs
+      Agency.Migrator/Program.cs
+    tests/
+      Agency.Domain.Tests/  Agency.Application.Tests/
+      Agency.IntegrationTests/  Agency.ArchitectureTests/
+  frontend/
+    pnpm-workspace.yaml
+    apps/backoffice/              Vite + React + TS
+    packages/api-client/          generated from OpenAPI
+  deploy/
+    docker/                       Dockerfiles (or next to each project)
+    helm/agency/                  Chart.yaml, templates/, values.yaml, values-test.yaml
+    kind/                         local cluster config
+  docker-compose.yml              PostgreSQL + Keycloak (+ later Redis, mail catcher)
+  docs/ …</pre>
+
+<h2 id="d3">D3. The tasks, one pull request each</h2>
+<p><code>development-strategy.md</code> lists 10 steps. Here they are split into pull requests and reordered slightly: CI comes right after the solution exists ("automate from day one"), and Kubernetes is split into local and cloud. Sizes are rough guesses for someone learning the tools, not commitments.</p>
+<table>
+<tr><th style="width:4%">#</th><th style="width:22%">Pull request</th><th>Contents</th><th style="width:21%">New concepts (Part E)</th><th style="width:8%">Size</th></tr>
+<tr><td>0</td><td>Repo housekeeping</td><td>GitHub remote, branch rename, <code>.gitignore</code>, folder layout, <code>.editorconfig</code></td><td>Git &amp; pull requests, ADR</td><td>½ day</td></tr>
+<tr><td>1</td><td>Solution + architecture tests</td><td>Projects, references, build props, CPM, test projects, first arch tests</td><td>Clean Architecture, modular monolith, nullable, arch tests, xUnit</td><td>1–2 days</td></tr>
+<tr><td>2</td><td>CI: build and test</td><td>GitHub Actions workflow on every PR</td><td>CI/CD, GitHub Actions</td><td>½–1 day</td></tr>
+<tr><td>3</td><td>City domain</td><td><code>City</code> entity, <code>Result</code>/<code>Error</code>, domain tests</td><td>Entity, invariants, Result pattern, TDD, Guid v7</td><td>1 day</td></tr>
+<tr><td>4</td><td>Application use cases</td><td><code>CreateCity</code>, <code>ListCities</code>, <code>ICityRepository</code>, tests with a fake</td><td>Interfaces, CQRS-lite, repository per aggregate, async + CancellationToken, LINQ</td><td>1 day</td></tr>
+<tr><td>5</td><td>Persistence</td><td>DbContext, mapping, collation, migration, compose PostgreSQL, Migrator, integration tests</td><td>EF Core, migrations, schema/constraints, collations, Testcontainers, configuration</td><td>2–3 days</td></tr>
+<tr><td>6</td><td>API</td><td>Endpoints, validation, ProblemDetails, OpenAPI, health checks, JSON logs</td><td>DI, minimal APIs, middleware, validation, ProblemDetails, OpenAPI, health checks, logging</td><td>2 days</td></tr>
+<tr><td>7</td><td>Sign-in (API)</td><td>Keycloak in compose, JWT bearer, <code>admin</code> role, 401/403 tests</td><td>OAuth 2 / OIDC / JWT, authorization, secrets</td><td>2 days</td></tr>
+<tr><td>8</td><td>Front-end scaffold</td><td>pnpm workspace, Vite app, router, TanStack Query, generated client</td><td>TypeScript, pnpm, Vite, components, hooks, router, TanStack Query, generated client</td><td>2 days</td></tr>
+<tr><td>9</td><td>Cities page + browser sign-in</td><td>Table + form, OIDC login, token on API calls, front-end tests</td><td>OIDC in the browser, component library, forms, Vitest</td><td>2–3 days</td></tr>
+<tr><td>10</td><td>Containers</td><td>Dockerfiles (API, Migrator, web), compose runs everything</td><td>Containers, multi-stage builds, compose, runtime config</td><td>1–2 days</td></tr>
+<tr><td>11</td><td>Helm on kind</td><td>Chart: Deployments, Services, Ingress/Gateway, Secret, probes, migration Job</td><td>Pods, Deployments, Services, Ingress, ConfigMap/Secret, probes, resources, namespaces, Helm, Jobs</td><td>3–4 days</td></tr>
+<tr><td>12</td><td>Test cluster + CD</td><td>Cloud cluster + managed PG, registry, cert-manager, deploy workflow</td><td>Registry &amp; tags, cert-manager, rolling updates, managed services, OIDC to cloud</td><td>3–5 days</td></tr>
+</table>
+<p class="small muted">Total: roughly 4–6 weeks of focused work for a first-time path. Most of the time goes into tasks 5, 7, 11 and 12. That is the point of a walking skeleton: these costs are paid once.</p>
+
+<h2 id="d4" class="newpage">D4. Task by task</h2>
+
+<h3>Task 0 · Repository housekeeping</h3>
+<pre>gh auth login
+gh repo create agency --private --source . --remote origin
+git branch -m master main &amp;&amp; git push -u origin main
+<span class="c"># .gitignore additions</span>
+._*
+.DS_Store
+TestResults/
+*.trx
+coverage/</pre>
+<p>Also add <code>.editorconfig</code> (C# style rules the build can enforce) and the empty folders from D2. <b>Check:</b> the repository appears on GitHub, with no <code>._*</code> files in <code>git status</code>.</p>
+
+<h3>Task 1 · Solution and architecture tests</h3>
+<pre>cd backend
+dotnet new sln -n Agency                       <span class="c"># creates Agency.slnx on .NET 10</span>
+dotnet new classlib -o src/Agency.Domain
+dotnet new classlib -o src/Agency.Application
+dotnet new classlib -o src/Agency.Infrastructure
+dotnet new web      -o src/Agency.BackOffice    <span class="c"># minimal API host</span>
+dotnet new console  -o src/Agency.Migrator
+<span class="c"># references point inward only</span>
+dotnet add src/Agency.Application    reference src/Agency.Domain
+dotnet add src/Agency.Infrastructure reference src/Agency.Application
+dotnet add src/Agency.BackOffice     reference src/Agency.Application src/Agency.Infrastructure
+dotnet add src/Agency.Migrator       reference src/Agency.Infrastructure</pre>
+<pre><span class="c">&lt;!-- backend/Directory.Build.props: applies to every project --&gt;</span>
+&lt;Project&gt;
+  &lt;PropertyGroup&gt;
+    &lt;TargetFramework&gt;net10.0&lt;/TargetFramework&gt;
+    &lt;Nullable&gt;enable&lt;/Nullable&gt;
+    &lt;ImplicitUsings&gt;enable&lt;/ImplicitUsings&gt;
+    &lt;TreatWarningsAsErrors&gt;true&lt;/TreatWarningsAsErrors&gt;
+    &lt;ManagePackageVersionsCentrally&gt;true&lt;/ManagePackageVersionsCentrally&gt;
+  &lt;/PropertyGroup&gt;
+&lt;/Project&gt;</pre>
+<pre><span class="c">// tests/Agency.ArchitectureTests — the rule written as a test (NetArchTest-style sketch)</span>
+[Fact]
+public void Domain_does_not_depend_on_frameworks()
+{
+    var result = Types.InAssembly(typeof(City).Assembly)
+        .ShouldNot().HaveDependencyOnAny("Microsoft.EntityFrameworkCore", "Microsoft.AspNetCore")
+        .GetResult();
+    Assert.True(result.IsSuccessful, string.Join(", ", result.FailingTypeNames ?? []));
+}</pre>
+<p>Other first rules: Application does not depend on Infrastructure. Domain and Application do not depend on any host. <b>Check:</b> add a forbidden reference on purpose and watch the test fail, then remove it. Update the test command in <code>CLAUDE.md</code> to <code>Agency.slnx</code>.</p>
+
+<h3>Task 2 · CI: build and test on every pull request</h3>
+<pre><span class="c"># .github/workflows/ci.yml (sketch)</span>
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4          <span class="c"># use the current major versions</span>
+      - uses: actions/setup-dotnet@v4
+        with: { global-json-file: backend/global.json }
+      - run: dotnet restore backend/Agency.slnx
+      - run: dotnet build backend/Agency.slnx --no-restore -c Release
+      - run: dotnet test backend/Agency.slnx --no-build -c Release</pre>
+<p>On GitHub, protect <code>main</code>: require the <code>ci</code> check to pass before merging. Docker is available on <code>ubuntu-latest</code> runners, so Testcontainers integration tests (task 5) work there too. <b>Check:</b> open a PR with a failing test and confirm the merge button is blocked.</p>
+
+<h3>Task 3 · City domain (test first)</h3>
+<pre><span class="c">// tests/Agency.Domain.Tests/Catalogue/CityTests.cs — written BEFORE City exists</span>
+public class CityTests
+{
+    [Theory]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void Create_rejects_empty_name(string name)
+    {
+        var result = City.Create(name);
+        Assert.True(result.IsFailure);
+        Assert.Equal(CityErrors.NameRequired, result.Error);
+    }
+
+    [Fact]
+    public void Create_trims_the_name()
+    {
+        var result = City.Create("  Marrakech ");
+        Assert.Equal("Marrakech", result.Value.Name);
+    }
+
+    [Fact]
+    public void Create_rejects_names_longer_than_100_characters()
+        =&gt; Assert.Equal(CityErrors.NameTooLong, City.Create(new string('a', 101)).Error);
+}</pre>
+<pre><span class="c">// src/Agency.Domain/Catalogue/City.cs — the entity guards its own rules</span>
+public sealed class City
+{
+    public const int NameMaxLength = 100;
+    public Guid Id { get; private set; }
+    public string Name { get; private set; } = null!;
+
+    private City() { }                                  <span class="c">// for EF Core materialisation</span>
+
+    public static Result&lt;City&gt; Create(string? name)
+    {
+        var trimmed = name?.Trim() ?? "";
+        if (trimmed.Length == 0)            return CityErrors.NameRequired;
+        if (trimmed.Length &gt; NameMaxLength) return CityErrors.NameTooLong;
+        return new City { Id = Guid.CreateVersion7(), Name = trimmed };
+    }
+}
+
+public static class CityErrors
+{
+    public static readonly Error NameRequired = new("city.name_required", "City name is required.");
+    public static readonly Error NameTooLong  = new("city.name_too_long", "City name is at most 100 characters.");
+    public static readonly Error NameTaken    = new("city.name_taken", "A city with this name already exists.");
+}</pre>
+<div class="box note"><span class="box-t">Why is "unique" not checked here?</span><p>An entity sees only itself. It cannot know which other cities exist. Uniqueness is a rule across many rows, so it is enforced in two places. The <b>use case</b> checks first, to give a friendly error. The <b>database unique index</b> guarantees it even when two requests arrive at the same moment (task 5). This "check plus constraint" pattern comes back for contract versions and invoice numbers.</p></div>
+
+<h3>Task 4 · Application: CreateCity and ListCities</h3>
+<pre><span class="c">// src/Agency.Application/Catalogue/ICityRepository.cs — declared here, implemented in Infrastructure</span>
+public interface ICityRepository
+{
+    Task&lt;bool&gt; NameExistsAsync(string name, CancellationToken ct);
+    void Add(City city);
+    Task&lt;Result&gt; SaveChangesAsync(CancellationToken ct);       <span class="c">// turns a unique-violation into NameTaken</span>
+}
+
+<span class="c">// src/Agency.Application/Catalogue/CreateCity.cs — a plain handler class, no MediatR</span>
+public sealed record CreateCityCommand(string Name);
+
+public sealed class CreateCityHandler(ICityRepository cities, ILogger&lt;CreateCityHandler&gt; logger)
+{
+    public async Task&lt;Result&lt;Guid&gt;&gt; HandleAsync(CreateCityCommand command, CancellationToken ct)
+    {
+        var created = City.Create(command.Name);
+        if (created.IsFailure) return created.Error;
+
+        if (await cities.NameExistsAsync(created.Value.Name, ct))
+            return CityErrors.NameTaken;
+
+        cities.Add(created.Value);
+        var saved = await cities.SaveChangesAsync(ct);
+        if (saved.IsFailure) return saved.Error;
+
+        logger.LogInformation("City {CityId} created", created.Value.Id);
+        return created.Value.Id;
+    }
+}</pre>
+<p><code>ListCities</code> is a <b>query</b>. It only reads, returns a small DTO (<code>CityDto(Guid Id, string Name)</code>) sorted by name, and does not load entities for change tracking. Test the handler with a hand-written <code>FakeCityRepository</code> (a list in memory). No mocking library is needed.</p>
+
+<h3>Task 5 · Persistence</h3>
+<pre><span class="c">// Infrastructure: mapping lives here, not in the entity</span>
+internal sealed class CityConfiguration : IEntityTypeConfiguration&lt;City&gt;
+{
+    public void Configure(EntityTypeBuilder&lt;City&gt; b)
+    {
+        b.ToTable("cities", "catalogue");                 <span class="c">// one PostgreSQL schema per module</span>
+        b.HasKey(c =&gt; c.Id);
+        b.Property(c =&gt; c.Name).HasMaxLength(City.NameMaxLength).UseCollation("ci_ai");
+        b.HasIndex(c =&gt; c.Name).IsUnique();
+    }
+}
+<span class="c">// in AgencyDbContext.OnModelCreating</span>
+modelBuilder.HasCollation("ci_ai", locale: "und-u-ks-level1", provider: "icu", deterministic: false);</pre>
+<pre><span class="c"># docker-compose.yml (excerpt) — local only; the password is a dev value, never reused</span>
+services:
+  postgres:
+    image: postgres:17            <span class="c"># or 18: match what the managed service will run</span>
+    environment: { POSTGRES_DB: agency, POSTGRES_USER: agency, POSTGRES_PASSWORD: dev_only }
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+volumes: { pgdata: {} }
+
+<span class="c"># create the first migration (tool: dotnet tool install --global dotnet-ef)</span>
+dotnet ef migrations add InitialCatalogue -p src/Agency.Infrastructure -s src/Agency.Migrator
+dotnet run --project src/Agency.Migrator          <span class="c"># applies migrations, then exits</span></pre>
+<p>Integration tests (Testcontainers) start a real PostgreSQL, apply migrations, and prove three things: a city round-trips, inserting "fès" after "Fès" violates the unique index, and the repository turns that violation (<code>SqlState 23505</code>) into <code>CityErrors.NameTaken</code>. <b>Check:</b> open DBeaver and look at <code>catalogue.cities</code>, its primary key, its unique index and the collation.</p>
+
+<h3>Task 6 · API</h3>
+<pre><span class="c">// src/Agency.BackOffice/Endpoints/CityEndpoints.cs</span>
+public static class CityEndpoints
+{
+    public static RouteGroupBuilder MapCityEndpoints(this IEndpointRouteBuilder app)
+    {
+        var group = app.MapGroup("/api/cities").WithTags("Cities").RequireAuthorization("Admin");
+
+        group.MapGet("/", async (ListCitiesHandler h, CancellationToken ct) =&gt;
+            TypedResults.Ok(await h.HandleAsync(ct)));
+
+        group.MapPost("/", async Task&lt;Results&lt;Created&lt;CityCreatedResponse&gt;, ProblemHttpResult&gt;&gt;
+            (CreateCityRequest req, CreateCityHandler h, CancellationToken ct) =&gt;
+        {
+            var result = await h.HandleAsync(new CreateCityCommand(req.Name), ct);
+            return result.IsSuccess
+                ? TypedResults.Created($"/api/cities/{result.Value}", new CityCreatedResponse(result.Value))
+                : result.Error.ToProblem();             <span class="c">// NameTaken → 409, NameRequired → 400</span>
+        });
+        return group;
+    }
+}
+public sealed record CreateCityRequest([property: Required, MaxLength(100)] string Name);</pre>
+<pre><span class="c">// Program.cs (excerpt) — the host wires everything together</span>
+var builder = WebApplication.CreateBuilder(args);
+builder.Logging.AddJsonConsole();
+builder.Services.AddProblemDetails();
+builder.Services.AddValidation();
+builder.Services.AddOpenApi();
+builder.Services.AddInfrastructure(builder.Configuration);   <span class="c">// DbContext, repositories</span>
+builder.Services.AddApplication();                            <span class="c">// handlers</span>
+builder.Services.AddHealthChecks().AddDbContextCheck&lt;AgencyDbContext&gt;(tags: ["ready"]);
+
+var app = builder.Build();
+app.UseExceptionHandler();                                    <span class="c">// unhandled → 500 ProblemDetails</span>
+app.UseAuthentication(); app.UseAuthorization();
+app.MapOpenApi();
+app.MapHealthChecks("/health/live", new() { Predicate = _ =&gt; false });          <span class="c">// process alive</span>
+app.MapHealthChecks("/health/ready", new() { Predicate = c =&gt; c.Tags.Contains("ready") });
+app.MapCityEndpoints();
+app.Run();</pre>
+<p>Also add an <code>.http</code> file (<code>backend/requests/cities.http</code>) to call the endpoints from VS Code or Rider. <b>Check:</b> the OpenAPI document lists both endpoints with their 201/400/409 responses, and the logs come out as one JSON object per line.</p>
+
+<h3>Task 7 · Sign-in on the API</h3>
+<p>Run Keycloak in compose. Create a realm <code>agency</code>, a public client <code>backoffice</code> (authorization code + PKCE), a realm role <code>admin</code> and a test user. Export the realm to <code>deploy/keycloak/agency-realm.json</code> so anyone can recreate it.</p>
+<pre>builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(o =&gt;
+    {
+        o.Authority = builder.Configuration["Auth:Authority"];   <span class="c">// e.g. http://localhost:8081/realms/agency</span>
+        o.Audience  = builder.Configuration["Auth:Audience"];    <span class="c">// the API's name in the token</span>
+        o.MapInboundClaims = false;                              <span class="c">// keep claim names as issued</span>
+    });
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("Admin", p =&gt; p.RequireAuthenticatedUser().RequireRole("admin"));</pre>
+<div class="box warn"><span class="box-t">Gotcha · Keycloak roles</span><p>By default Keycloak puts realm roles inside a nested claim (<code>realm_access.roles</code>), and ASP.NET Core's <code>RequireRole</code> will not see them. Fix it with a Keycloak "protocol mapper" that emits a flat <code>roles</code> claim (and set <code>RoleClaimType = "roles"</code>), or with a small claims transformation in the API. Write an integration test that proves an admin gets 200, a non-admin 403 and an anonymous call 401.</p></div>
+
+<h3>Task 8 · Front-end scaffold</h3>
+<pre>cd frontend
+pnpm init                                     <span class="c"># root package.json (private)</span>
+printf 'packages:\n  - "apps/*"\n  - "packages/*"\n' &gt; pnpm-workspace.yaml
+pnpm create vite apps/backoffice --template react-ts
+pnpm -C apps/backoffice add @tanstack/react-query react-router
+<span class="c"># generate types from the API's OpenAPI document</span>
+pnpm -C packages/api-client exec openapi-typescript http://localhost:5080/openapi/v1.json -o src/schema.d.ts</pre>
+<p>In <code>vite.config.ts</code>, proxy <code>/api</code> to the local API so the browser sees one origin (decision 11). <b>Check:</b> <code>pnpm -C frontend -r test</code> and <code>pnpm -C frontend -r build</code> both pass, and CI gets a <code>frontend</code> job.</p>
+
+<h3>Task 9 · Cities page and browser sign-in</h3>
+<pre>export function CitiesPage() {
+  const queryClient = useQueryClient();
+  const cities = useQuery({ queryKey: ["cities"], queryFn: () =&gt; api.listCities() });
+  const create = useMutation({
+    mutationFn: (name: string) =&gt; api.createCity({ name }),
+    onSuccess: () =&gt; queryClient.invalidateQueries({ queryKey: ["cities"] }),  // refetch the list
+  });
+  if (cities.isPending) return &lt;Spinner /&gt;;
+  if (cities.isError) return &lt;ErrorBanner error={cities.error} /&gt;;
+  return (
+    &lt;&gt;
+      &lt;CityForm onSubmit={create.mutate} error={create.error} /&gt;   {/* shows 409 "name taken" */}
+      &lt;CityTable rows={cities.data} /&gt;
+    &lt;/&gt;
+  );
+}</pre>
+<p>Sign-in uses an OIDC library (for example <code>oidc-client-ts</code> with <code>react-oidc-context</code>). Unauthenticated users are redirected to Keycloak. The access token is attached to every API call. Test the page with Vitest + Testing Library, using a fake API.</p>
+
+<h3>Task 10 · Containers</h3>
+<pre><span class="c"># Dockerfile for Agency.BackOffice (multi-stage sketch; run from backend/)</span>
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+COPY . .
+RUN dotnet publish src/Agency.BackOffice -c Release -o /app
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final       <span class="c"># runtime only: much smaller</span>
+WORKDIR /app
+COPY --from=build /app .
+USER $APP_UID                                            <span class="c"># run as non-root</span>
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "Agency.BackOffice.dll"]</pre>
+<p>Write the same kind of file for the Migrator, plus an nginx image that serves the built SPA with an SPA fallback (<code>try_files $uri /index.html</code>). <code>docker compose up</code> then runs PostgreSQL, Keycloak, the migrator, the API and the web app together.</p>
+<div class="box warn"><span class="box-t">Gotcha · build once, configure at runtime</span><p>Vite bakes <code>import.meta.env.VITE_*</code> values into the JavaScript at <b>build</b> time. If the identity provider URL is baked in, you would need a different image per environment, which breaks "the same image goes from test to production". Instead, the nginx container serves a small <code>/config.json</code> (mounted from a ConfigMap) that the app reads at start-up.</p></div>
+
+<h3>Task 11 · Helm on a local kind cluster</h3>
+<pre>deploy/helm/agency/
+  Chart.yaml
+  values.yaml                 defaults (image names, ports, resources)
+  values-local.yaml           kind: local hostnames, in-cluster PostgreSQL for convenience
+  values-test.yaml            test cluster: real hostnames, TLS, managed DB secret name
+  templates/
+    api-deployment.yaml  api-service.yaml
+    web-deployment.yaml  web-service.yaml  web-config.yaml (ConfigMap: config.json)
+    ingress.yaml (or httproute.yaml)
+    migrator-job.yaml           Helm hook: pre-install, pre-upgrade
+
+kind create cluster --name agency --config deploy/kind/cluster.yaml
+kind load docker-image agency-api:dev agency-web:dev agency-migrator:dev --name agency
+helm upgrade --install agency deploy/helm/agency -n agency-local --create-namespace -f deploy/helm/agency/values-local.yaml
+kubectl -n agency-local get pods -w</pre>
+<div class="box warn"><span class="box-t">Gotcha · migration Job and Secrets</span><p>A Helm <code>pre-install</code> hook runs <i>before</i> the chart's normal resources are created. If the database Secret is a normal template in the same chart, it does not exist yet when the migration Job starts on first install. Create the Secret outside the chart (by hand or via CD, which is also safer), or make the Secret a hook with a lower hook weight.</p></div>
+
+<h3>Task 12 · Test cluster and continuous deployment</h3>
+<ol>
+<li>Create (in the client's cloud account) a small managed Kubernetes cluster, a managed PostgreSQL and DNS records. Install cert-manager and the chosen ingress/gateway controller.</li>
+<li>Create the namespace <code>agency-test</code> and the Secret holding the connection string (never in Git).</li>
+<li><code>cd.yml</code>: on merge to <code>main</code>, build images, tag them with the commit SHA, push them to the registry, then run <code>helm upgrade --install … --set image.tag=$SHA -f values-test.yaml</code>.</li>
+<li>Give GitHub access to the cloud with <b>OIDC federation</b> (a short-lived token per run) instead of storing a long-lived cloud password as a GitHub secret.</li>
+</ol>
+<div class="box ok"><span class="box-t">The gate demo (show this to the client)</span><ol>
+<li>Open <code>https://backoffice.test.&lt;domain&gt;</code>. The padlock shows a valid certificate.</li>
+<li>Sign in as the test admin. Sign in as a non-admin and show that the page is refused.</li>
+<li>Add "Taroudant", then try "taroudant" and show the "already exists" message.</li>
+<li>Show the row in PostgreSQL, the structured log line, and the CI run that deployed it.</li>
+<li>Merge a tiny visible change and watch it reach the test environment without touching a server.</li>
+</ol></div>
+
+<!-- ===================================================== PART E -->
+<h1 class="part" id="part-e"><span class="n">Part E</span>Concept reviews</h1>
+<p class="part-intro">Every concept slice 1 uses, grouped by area. Read a card just before the task that introduces it (the tag shows which). Then apply it, and write your own 5–10 line note in <code>docs/learning/</code>.</p>
+<h3 style="margin-top:0">Concept index</h3>
+<div class="toc cidx"><div class="row "><a class="t" href="#k-adr">Architecture Decision Record (ADR)</a><span class="dots"></span><span class="pg">33</span></div><div class="row "><a class="t" href="#k-archtest">Architecture tests</a><span class="dots"></span><span class="pg">33</span></div><div class="row "><a class="t" href="#k-async">async/await and CancellationToken</a><span class="dots"></span><span class="pg">34</span></div><div class="row "><a class="t" href="#k-authz">Authentication vs authorization, roles and policies</a><span class="dots"></span><span class="pg">44</span></div><div class="row "><a class="t" href="#k-git">Branches, commits, pull requests</a><span class="dots"></span><span class="pg">53</span></div><div class="row "><a class="t" href="#k-cicd">CI/CD with GitHub Actions</a><span class="dots"></span><span class="pg">52</span></div><div class="row "><a class="t" href="#k-clean">Clean Architecture</a><span class="dots"></span><span class="pg">29</span></div><div class="row "><a class="t" href="#k-collation">Collations and case/accent-insensitive text</a><span class="dots"></span><span class="pg">42</span></div><div class="row "><a class="t" href="#k-ui">Component library, data grid, forms</a><span class="dots"></span><span class="pg">47</span></div><div class="row "><a class="t" href="#k-config">Configuration and the Options pattern</a><span class="dots"></span><span class="pg">36</span></div><div class="row "><a class="t" href="#k-registry">Container registry and image tags</a><span class="dots"></span><span class="pg">49</span></div><div class="row "><a class="t" href="#k-containers">Containers, images, multi-stage builds</a><span class="dots"></span><span class="pg">49</span></div><div class="row "><a class="t" href="#k-cqrs">CQRS-lite: commands and queries</a><span class="dots"></span><span class="pg">32</span></div><div class="row "><a class="t" href="#k-scan">Dependency and image scanning</a><span class="dots"></span><span class="pg">45</span></div><div class="row "><a class="t" href="#k-di">Dependency injection (DI)</a><span class="dots"></span><span class="pg">35</span></div><div class="row "><a class="t" href="#k-efcore">EF Core: DbContext and change tracking</a><span class="dots"></span><span class="pg">40</span></div><div class="row "><a class="t" href="#k-entity">Entity, invariant, factory method</a><span class="dots"></span><span class="pg">30</span></div><div class="row "><a class="t" href="#k-vitest">Front-end tests: Vitest and Testing Library</a><span class="dots"></span><span class="pg">48</span></div><div class="row "><a class="t" href="#k-client">Generated API client</a><span class="dots"></span><span class="pg">47</span></div><div class="row "><a class="t" href="#k-health">Health checks</a><span class="dots"></span><span class="pg">38</span></div><div class="row "><a class="t" href="#k-helm">Helm: charts and values</a><span class="dots"></span><span class="pg">51</span></div><div class="row "><a class="t" href="#k-ingress">Ingress, Gateway API, cert-manager and TLS</a><span class="dots"></span><span class="pg">51</span></div><div class="row "><a class="t" href="#k-validation">Input validation vs business rules</a><span class="dots"></span><span class="pg">37</span></div><div class="row "><a class="t" href="#k-generics">Interfaces and generics</a><span class="dots"></span><span class="pg">35</span></div><div class="row "><a class="t" href="#k-kind">kind: Kubernetes in Docker</a><span class="dots"></span><span class="pg">52</span></div><div class="row "><a class="t" href="#k-k8s">Kubernetes core objects: Pod, Deployment, Service</a><span class="dots"></span><span class="pg">49</span></div><div class="row "><a class="t" href="#k-linq">LINQ</a><span class="dots"></span><span class="pg">35</span></div><div class="row "><a class="t" href="#k-probes">Liveness, readiness and startup probes</a><span class="dots"></span><span class="pg">50</span></div><div class="row "><a class="t" href="#k-managed">Managed PostgreSQL and Redis</a><span class="dots"></span><span class="pg">53</span></div><div class="row "><a class="t" href="#k-middleware">Middleware and the request pipeline</a><span class="dots"></span><span class="pg">37</span></div><div class="row "><a class="t" href="#k-migrations">Migrations and the Migrator host</a><span class="dots"></span><span class="pg">40</span></div><div class="row "><a class="t" href="#k-minimal">Minimal APIs, route groups, endpoint filters</a><span class="dots"></span><span class="pg">36</span></div><div class="row "><a class="t" href="#k-monolith">Modular monolith</a><span class="dots"></span><span class="pg">30</span></div><div class="row "><a class="t" href="#k-nullable">Nullable reference types</a><span class="dots"></span><span class="pg">34</span></div><div class="row "><a class="t" href="#k-oidc">OAuth 2, OpenID Connect, JWT</a><span class="dots"></span><span class="pg">43</span></div><div class="row "><a class="t" href="#k-oidcbrowser">OIDC sign-in in the browser</a><span class="dots"></span><span class="pg">48</span></div><div class="row "><a class="t" href="#k-openapi">OpenAPI</a><span class="dots"></span><span class="pg">36</span></div><div class="row "><a class="t" href="#k-owasp">OWASP Top 10, input validation, output encoding</a><span class="dots"></span><span class="pg">44</span></div><div class="row "><a class="t" href="#k-pnpm">pnpm workspaces and Vite</a><span class="dots"></span><span class="pg">46</span></div><div class="row "><a class="t" href="#k-types">PostgreSQL types: numeric, date, timestamptz, uuid</a><span class="dots"></span><span class="pg">41</span></div><div class="row "><a class="t" href="#k-problem">ProblemDetails</a><span class="dots"></span><span class="pg">37</span></div><div class="row "><a class="t" href="#k-router">React Router</a><span class="dots"></span><span class="pg">47</span></div><div class="row "><a class="t" href="#k-react">React: components, props, state, hooks</a><span class="dots"></span><span class="pg">46</span></div><div class="row "><a class="t" href="#k-repo">Repository per aggregate</a><span class="dots"></span><span class="pg">32</span></div><div class="row "><a class="t" href="#k-resources">Resource requests and limits</a><span class="dots"></span><span class="pg">50</span></div><div class="row "><a class="t" href="#k-result">Result pattern vs exceptions</a><span class="dots"></span><span class="pg">31</span></div><div class="row "><a class="t" href="#k-rolling">Rolling updates and rollbacks</a><span class="dots"></span><span class="pg">52</span></div><div class="row "><a class="t" href="#k-schema">Schema design: keys and constraints</a><span class="dots"></span><span class="pg">41</span></div><div class="row "><a class="t" href="#k-secrets">Secrets management</a><span class="dots"></span><span class="pg">44</span></div><div class="row "><a class="t" href="#k-logging">Structured logging with ILogger</a><span class="dots"></span><span class="pg">38</span></div><div class="row "><a class="t" href="#k-tanstack">TanStack Query</a><span class="dots"></span><span class="pg">46</span></div><div class="row "><a class="t" href="#k-tdd">Test-first and the test pyramid</a><span class="dots"></span><span class="pg">32</span></div><div class="row "><a class="t" href="#k-timeprovider">TimeProvider</a><span class="dots"></span><span class="pg">38</span></div><div class="row "><a class="t" href="#k-ts">TypeScript</a><span class="dots"></span><span class="pg">38</span></div><div class="row "><a class="t" href="#k-slice">Vertical slice and walking skeleton</a><span class="dots"></span><span class="pg">29</span></div><div class="row "><a class="t" href="#k-xunit">xUnit and Testcontainers</a><span class="dots"></span><span class="pg">39</span></div></div>
+
+<h2 id="e1" class="newpage">E1. Architecture and ways of working</h2>
+
+<div class="card" id="k-slice"><h3>Vertical slice and walking skeleton <span class="tag">Whole project</span></h3>
+<p class="one">Build one feature through every layer before starting the next. The very first slice is deliberately trivial but deployed for real.</p>
+<div class="r"><b>Why we need it here</b>A single developer can easily spend months on "the database" or "the framework" with nothing to show. Slices produce something the client can see every two weeks. The <b>walking skeleton</b> (a term from Alistair Cockburn) is a minimal end-to-end path that "walks": a city typed in a browser on the cluster reaches the database. Every later slice reuses that path and only adds business logic.</div>
+<div class="r"><b>In this project</b>Slice 1 = cities. Slice 2 = one hotel contract with one season and one rate, priced for a stay. Each slice follows B2's order: domain test → domain → application → infrastructure → API → screen → Helm values.</div>
+<div class="r"><b>Watch out</b>Do not gold-plate the skeleton (no generic CRUD framework "to save time later"). Do not skip deployment "until later": finding deployment problems early is the whole point.</div>
+</div>
+
+<div class="card" id="k-clean"><h3>Clean Architecture <span class="tag deep">Deep dive</span><span class="tag">Task 1</span></h3>
+<p class="one">Organise code in layers where every dependency points inward, toward the business rules. Frameworks and databases are details on the outside.</p>
+<div class="r"><b>Why we need it here</b>The old system put rules in stored procedures and click handlers, so you could not test a price without a database and a form. We want pricing, contract versions and invoices as plain C# that runs in a millisecond-fast unit test. We also want to swap infrastructure (AI provider, storage, WhatsApp provider) without touching business code.</div>
+<div class="diagram">
+<svg viewBox="0 0 640 210" width="620" height="200" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="10">
+  <rect x="5" y="5" width="630" height="200" rx="14" fill="#f4f6f9" stroke="#8a93a3"/>
+  <text x="20" y="24" font-weight="700" fill="#5b6476">Hosts — BackOffice · PartnerApi · PublicSite · Worker · McpServer · Migrator</text>
+  <text x="20" y="38" font-size="8.8" fill="#5b6476">Thin endpoints, wiring (DI), configuration. Reference Application + Infrastructure (for wiring only).</text>
+  <rect x="35" y="48" width="570" height="148" rx="12" fill="#fdf4e1" stroke="#8a5a00"/>
+  <text x="50" y="66" font-weight="700" fill="#8a5a00">Infrastructure</text>
+  <text x="50" y="79" font-size="8.8" fill="#5b6476">EF Core + Npgsql, AI client, storage, email, PDF. Implements interfaces declared in Application.</text>
+  <rect x="70" y="88" width="500" height="100" rx="10" fill="#eaf1f8" stroke="#2c5d8f"/>
+  <text x="85" y="106" font-weight="700" fill="#2c5d8f">Application</text>
+  <text x="85" y="119" font-size="8.8" fill="#5b6476">Use cases (CreateCity, PriceStay, IssueInvoice), interfaces (ICityRepository, IContractExtractor), validation, permissions</text>
+  <rect x="110" y="128" width="420" height="52" rx="8" fill="#fbeee9" stroke="#b4452a"/>
+  <text x="125" y="147" font-weight="700" fill="#b4452a">Domain</text>
+  <text x="125" y="161" font-size="8.8" fill="#5b6476">Entities, value objects, rules, domain events. City, Contract, Money, DateRange.</text>
+  <text x="125" y="173" font-size="8.8" fill="#5b6476">References nothing — no EF Core, no ASP.NET.</text>
+</svg>
+<div class="cap">Figure E1 — Each ring may use only rings inside it. Arrows of "uses" always point inward.</div>
+</div>
+<div class="r"><b>How it works: the trick that makes it possible</b>The Application layer needs to save a city, but it must not know about EF Core. So Application <b>declares an interface</b> (<code>ICityRepository</code>), and Infrastructure <b>implements</b> it. At start-up the host connects the two through dependency injection. The compile-time dependency points inward (Infrastructure → Application), even though at run time Application calls Infrastructure. This is the <b>Dependency Inversion Principle</b>, the "D" in SOLID.</div>
+<div class="r"><b>In this project</b>Projects <code>Agency.Domain</code> → <code>Agency.Application</code> → <code>Agency.Infrastructure</code> → hosts. Project references make wrong dependencies impossible to compile in one direction, and architecture tests catch the rest (for example a <code>using Microsoft.EntityFrameworkCore</code> sneaking into Domain through a package).</div>
+<div class="r"><b>Watch out</b>The common failure is over-layering: five classes and three mappings to list cities. <code>analysis-and-design.md</code> warns about this explicitly. Simple reads can be thin queries. Use the full ceremony where rules exist (pricing, billing).</div>
+<div class="r"><b>Read</b>Microsoft's "Common web application architectures" guide (Clean Architecture section). Robert C. Martin, <i>Clean Architecture</i>, chapters on the Dependency Rule.</div>
+</div>
+
+<div class="card" id="k-monolith"><h3>Modular monolith <span class="tag">Task 1</span></h3>
+<p class="one">One deployable application and one database, divided inside into business modules with clear borders.</p>
+<div class="r"><b>Why we need it here</b>ADR 0001: one developer and tightly connected rules (a booking needs prices, an invoice needs bookings). Microservices would add network calls, distributed transactions and many deployments for no benefit. The borders still matter, though: without them you get the old system's "everything touches everything".</div>
+<div class="r"><b>In this project</b>Modules are <b>folders</b> in each layer: <code>Agency.Domain/Catalogue/</code>, <code>Agency.Domain/Contracts/</code>, and so on. A module never uses another module's internals. It calls that module's application interface, or reacts to a domain event. A good habit: give each module its own PostgreSQL <b>schema</b> (<code>catalogue.cities</code>), so ownership is visible in the database too.</div>
+<div class="r"><b>Watch out</b>"Modular monolith" is not the same as "several hosts". The six hosts (BackOffice, PartnerApi …) are different <i>entry points</i> into the same modules. Use <code>internal</code> for types that other modules must not use, and add architecture tests for module borders once there are two modules.</div>
+</div>
+
+<div class="card" id="k-entity"><h3>Entity, invariant, factory method <span class="tag">Task 3</span></h3>
+<p class="one">An entity has an identity that stays the same while its data changes. An invariant is a rule it must <i>always</i> satisfy. A factory method is the single door through which valid instances are created.</p>
+<div class="r"><b>Why we need it here</b><code>CLAUDE.md</code> forbids "anemic models" (classes with public setters and all rules in services). If anyone can write <code>city.Name = ""</code>, the rule "name not empty" must be re-checked everywhere, and one place will forget. If the only ways to create or change a city check the rule, an invalid city cannot exist.</div>
+<div class="r"><b>In this project</b><code>City</code> has a private constructor, private setters and a <code>static Result&lt;City&gt; Create(string?)</code>. Later, <code>Contract</code> guards "one active version", and <code>Invoice</code> refuses changes once issued. Entities are compared by <code>Id</code>, not by their data. (Value objects, which are compared by value, such as <code>Money</code> and <code>DateRange</code>, arrive in slice 2.)</div>
+<div class="r"><b>Watch out</b>EF Core needs a way to create objects when it reads them from the database. A private parameterless constructor is enough, and EF Core can set private setters. Keep the domain free of EF attributes. Mapping goes in Infrastructure configurations.</div>
+</div>
+
+<div class="card" id="k-result"><h3>Result pattern vs exceptions <span class="tag deep">Deep dive</span><span class="tag">Task 3</span></h3>
+<p class="one">Return expected failures as a value (<code>Result</code>) that the caller must look at. Keep exceptions for bugs and broken infrastructure.</p>
+<div class="r"><b>Why we need it here</b>"Name already taken", "contract overlaps", "credit limit exceeded" are <i>normal business outcomes</i>, not crashes. If they are exceptions, the method signature hides them, callers forget to catch them, and they cost a stack trace each time. A <code>Result</code> makes the failure part of the signature: <code>Task&lt;Result&lt;Guid&gt;&gt;</code> says "this can fail, deal with it".</div>
+<div class="r"><b>How it works</b>A small type we write ourselves in the Domain (no package needed):</div>
+<pre>public sealed record Error(string Code, string Message);
+
+public class Result
+{
+    protected Result(Error? error) =&gt; Error = error;
+    public Error? Error { get; }
+    public bool IsSuccess =&gt; Error is null;
+    public bool IsFailure =&gt; !IsSuccess;
+    public static Result Success() =&gt; new(null);
+    public static implicit operator Result(Error error) =&gt; new(error);
+}
+
+public sealed class Result&lt;T&gt; : Result
+{
+    private readonly T? _value;
+    private Result(T value) : base(null) =&gt; _value = value;
+    private Result(Error error) : base(error) { }
+    public T Value =&gt; IsSuccess ? _value! : throw new InvalidOperationException("No value on failure.");
+    public static implicit operator Result&lt;T&gt;(T value) =&gt; new(value);
+    public static implicit operator Result&lt;T&gt;(Error error) =&gt; new(error);
+}</pre>
+<p>The implicit operators let you write <code>return CityErrors.NameTaken;</code> or <code>return city;</code>. At the API edge, one function maps error codes to HTTP: <code>*.name_taken</code> → 409 Conflict, validation codes → 400, <code>*.not_found</code> → 404.</p>
+<div class="r"><b>Watch out</b>Do not wrap infrastructure errors (database down, timeout) in Results. Those are exceptions, handled once by the global exception handler (→ 500). Reading <code>.Value</code> on a failure throws, because it is a bug. The error <code>Code</code> is a stable contract with the front end and partners: never rename one casually.</div>
+</div>
+
+<div class="card keep" id="k-cqrs"><h3>CQRS-lite: commands and queries <span class="tag">Task 4</span></h3>
+<p class="one">Use cases that <b>change</b> state (commands) are kept separate from use cases that only <b>read</b> (queries).</p>
+<div class="r"><b>In this project</b><code>CreateCityCommand</code> + <code>CreateCityHandler</code> goes through the entity and repository, with rules and logs. <code>ListCitiesHandler</code> reads straight into a DTO with <code>AsNoTracking()</code> and a projection. Later, reports and lists will be pure queries (even SQL views), while bookings and invoices stay rich commands.</div>
+<div class="r"><b>Watch out</b>"Lite" means one database and plain handler classes. No separate read database, no event sourcing, and no MediatR (<code>CLAUDE.md</code>, and MediatR now has a commercial licence). Each handler is a normal class registered in DI and called directly by the endpoint.</div>
+</div>
+
+<div class="card keep" id="k-repo"><h3>Repository per aggregate <span class="tag">Task 4</span></h3>
+<p class="one">One interface per aggregate root, with only the operations that aggregate needs, written in business words.</p>
+<div class="r"><b>Why</b>A <b>generic repository</b> (<code>IRepository&lt;T&gt;</code> with <code>GetAll</code>, <code>Update</code>, <code>Delete</code> for everything) adds code but no value on top of EF Core's <code>DbSet</code>, and it invites misuse (deleting an issued invoice). <code>CLAUDE.md</code> forbids it. A specific <code>ICityRepository</code> with <code>NameExistsAsync</code> and <code>Add</code> says exactly what is allowed.</div>
+<div class="r"><b>Aggregate</b>An aggregate is a cluster of objects saved together through one root, for example <code>Contract</code> with its versions, seasons and rates. City is a one-object aggregate. You will meet real aggregates in slice 2.</div>
+</div>
+
+<div class="card" id="k-tdd"><h3>Test-first and the test pyramid <span class="tag">Task 3</span></h3>
+<p class="one">Write a failing test that states the rule, make it pass with the simplest code, then clean up ("red → green → refactor"). Have many fast tests at the bottom and fewer slow ones at the top.</p>
+<table>
+<tr><th style="width:18%">Level</th><th style="width:28%">Project</th><th>What it proves</th><th style="width:12%">Speed</th></tr>
+<tr><td>Domain unit</td><td><code>Agency.Domain.Tests</code></td><td>Business rules: name rules now, pricing later. The most valuable tests in the project.</td><td>ms</td></tr>
+<tr><td>Application</td><td><code>Agency.Application.Tests</code></td><td>Use-case flow with fake repository, fake clock, fake AI</td><td>ms</td></tr>
+<tr><td>Integration</td><td><code>Agency.IntegrationTests</code></td><td>EF mapping, constraints, transactions, real HTTP pipeline + auth, against real PostgreSQL</td><td>seconds</td></tr>
+<tr><td>Architecture</td><td><code>Agency.ArchitectureTests</code></td><td>Layer and module rules</td><td>ms</td></tr>
+<tr><td>Front end / E2E</td><td>Vitest, Playwright</td><td>Screens and critical flows</td><td>seconds+</td></tr>
+</table>
+<div class="r"><b>Watch out</b>A test you have never seen fail may be testing nothing. Watch it go red first. Name tests after the rule (<code>Create_rejects_empty_name</code>), so a failure reads like a broken business rule.</div>
+</div>
+
+<div class="card keep" id="k-archtest"><h3>Architecture tests <span class="tag">Task 1</span></h3>
+<p class="one">Unit tests that inspect compiled assemblies and fail when a dependency rule is broken.</p>
+<div class="r"><b>Why</b>Rules in a document get forgotten, and rules in a test fail the build. They guard against you on a tired day and against generated code that "helpfully" adds a reference.</div>
+<div class="r"><b>In this project</b>Domain has no EF Core or ASP.NET dependency. Application has no Infrastructure dependency. Later: module A does not use module B's internal namespaces, and handlers are <code>sealed</code>. Library choice: decision 4 in C3.</div>
+</div>
+
+<div class="card keep" id="k-adr"><h3>Architecture Decision Record (ADR) <span class="tag">Task 0</span></h3>
+<p class="one">A short file that records one important decision: context, decision, reasons, rejected alternatives. See B5 for the template.</p>
+<div class="r"><b>Watch out</b>ADRs are immutable history. Supersede one, never rewrite it. Keep each to one screen, because nobody reads a long one.</div>
+</div>
+
+<h2 id="e2" class="newpage">E2. C# and .NET</h2>
+
+<div class="card keep" id="k-nullable"><h3>Nullable reference types <span class="tag">Task 1</span></h3>
+<p class="one">The compiler tracks which references may be <code>null</code> (<code>string?</code>) and which may not (<code>string</code>), and warns when you mix them up.</p>
+<div class="r"><b>In this project</b>Turned on for every project in <code>Directory.Build.props</code>. With warnings as errors, a possible <code>NullReferenceException</code> becomes a build failure. <code>City.Create(string? name)</code> admits that input may be null. <code>City.Name</code> is <code>string</code>, so it is never null once created.</div>
+<div class="r"><b>Watch out</b><code>null!</code> ("trust me, it's not null") is acceptable only where a framework fills the value (EF Core materialisation). Anywhere else it hides a bug.</div>
+</div>
+
+<div class="card" id="k-async"><h3>async/await and CancellationToken <span class="tag deep">Deep dive</span><span class="tag">Task 4</span></h3>
+<p class="one">Non-blocking waiting for I/O (database, HTTP, AI). The thread is released while the database works, and resumes when the answer arrives.</p>
+<div class="r"><b>How it works</b>A web server has a limited pool of threads. If each request <i>blocks</i> a thread while waiting 20 ms for PostgreSQL, the pool runs out under load. With <code>await db.SaveChangesAsync(ct)</code> the method returns a <code>Task</code>, and the thread goes back to the pool to serve other requests. When the database answers, the rest of the method continues (possibly on another thread). The compiler rewrites your method into a state machine to make this work.</div>
+<div class="r"><b>CancellationToken</b>If the user closes the browser tab, ASP.NET Core cancels <code>HttpContext.RequestAborted</code>. In minimal APIs, add a <code>CancellationToken ct</code> parameter and it is bound automatically. Pass it down to every async call (<code>ToListAsync(ct)</code>), so abandoned work stops instead of wasting the database's time. In slice 6 the same mechanism will stop an expensive AI call nobody is waiting for.</div>
+<div class="r"><b>Rules</b>"Async all the way": never call <code>.Result</code> or <code>.Wait()</code> on a task, because that risks deadlocks and thread starvation. Name async methods <code>…Async</code>. Return <code>Task</code>, not <code>async void</code> (except event handlers). Do not use <code>Task.Run</code> to "make things async" in web code.</div>
+<div class="r"><b>Read</b>Microsoft docs: "Asynchronous programming with async and await"; "Cancellation in managed threads".</div>
+</div>
+
+<div class="card keep" id="k-linq"><h3>LINQ <span class="tag">Task 4</span></h3>
+<p class="one">Query syntax built into C# (<code>Where</code>, <code>Select</code>, <code>OrderBy</code>) that works on in-memory lists <i>and</i> is translated to SQL by EF Core.</p>
+<pre>var cities = await db.Cities.AsNoTracking()
+    .OrderBy(c =&gt; c.Name)
+    .Select(c =&gt; new CityDto(c.Id, c.Name))     // only these two columns are read
+    .ToListAsync(ct);                            // the SQL runs here, not before</pre>
+<div class="r"><b>Watch out</b>On a <code>DbSet</code>, nothing runs until you materialise (<code>ToListAsync</code>, <code>FirstOrDefaultAsync</code>, <code>CountAsync</code>). Calling <code>ToList()</code> too early loads the whole table into memory and filters it in C#. Turn on EF Core's SQL logging in development and read the SQL it generates.</div>
+</div>
+
+<div class="card keep" id="k-generics"><h3>Interfaces and generics <span class="tag">Task 4</span></h3>
+<p class="one">An <b>interface</b> is a contract ("anything that can do X"). <b>Generics</b> let one piece of code work with many types (<code>Result&lt;T&gt;</code>, <code>List&lt;City&gt;</code>) with full type safety.</p>
+<div class="r"><b>In this project</b><code>ICityRepository</code> has a real implementation (EF Core) and a fake one (tests). Later, <code>IContractExtractor</code> will have one implementation per AI provider. <code>Result&lt;T&gt;</code> is one generic type for every use-case result.</div>
+<div class="r"><b>Watch out</b>Create an interface when there is a real seam (infrastructure, or something a test must replace). Not "one interface per class by habit": that is ceremony.</div>
+</div>
+
+<div class="card" id="k-di"><h3>Dependency injection (DI) <span class="tag deep">Deep dive</span><span class="tag">Task 6</span></h3>
+<p class="one">Classes declare what they need in their constructor, and a container builds them, along with their dependencies, when needed.</p>
+<div class="r"><b>Why we need it here</b>It is the glue of Clean Architecture. <code>CreateCityHandler</code> asks for an <code>ICityRepository</code>. It does not know (and must not know) that the implementation is <code>EfCityRepository</code> using <code>AgencyDbContext</code>. The host registers who implements what, once, at start-up.</div>
+<pre>// Agency.Infrastructure/DependencyInjection.cs
+public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
+{
+    services.AddDbContext&lt;AgencyDbContext&gt;(o =&gt;
+        o.UseNpgsql(config.GetConnectionString("Agency")).UseSnakeCaseNamingConvention());
+    services.AddScoped&lt;ICityRepository, EfCityRepository&gt;();
+    return services;
+}
+// Agency.Application/DependencyInjection.cs
+services.AddScoped&lt;CreateCityHandler&gt;();
+services.AddScoped&lt;ListCitiesHandler&gt;();</pre>
+<div class="r"><b>Lifetimes: the part people get wrong</b>
+<b>Transient</b>: a new instance every time it is requested. <b>Scoped</b>: one instance per HTTP request, shared by everything in that request. <b>Singleton</b>: one instance for the whole application lifetime. <code>DbContext</code> is <b>scoped</b>: one unit of work per request. Handlers and repositories using it are scoped too.</div>
+<div class="r"><b>Watch out</b>A <b>captive dependency</b> happens when a singleton holds a scoped service (for example a <code>DbContext</code>). That context then lives forever, is shared across threads and breaks. In Development, ASP.NET Core validates scopes and throws at start-up when it sees this. Do not "fix" it by making everything a singleton. Avoid resolving services by hand (<code>GetService</code>) inside business code; constructor injection keeps dependencies visible.</div>
+<div class="r"><b>Read</b>Microsoft docs: "Dependency injection in ASP.NET Core" and "Service lifetimes".</div>
+</div>
+
+<div class="card" id="k-config"><h3>Configuration and the Options pattern <span class="tag">Task 5</span></h3>
+<p class="one">Settings come from layered sources, last one wins, and are bound to typed classes that are validated at start-up.</p>
+<div class="r"><b>How it works</b>Default order: <code>appsettings.json</code> → <code>appsettings.{Environment}.json</code> → user secrets (Development only) → environment variables → command line. In Kubernetes, values arrive as environment variables. A double underscore means "section": <code>ConnectionStrings__Agency</code> overrides <code>ConnectionStrings:Agency</code>.</div>
+<pre>public sealed class AuthOptions
+{
+    [Required] public string Authority { get; init; } = "";
+    [Required] public string Audience  { get; init; } = "";
+}
+builder.Services.AddOptions&lt;AuthOptions&gt;()
+    .Bind(builder.Configuration.GetSection("Auth"))
+    .ValidateDataAnnotations()
+    .ValidateOnStart();          // a missing setting stops the pod at start, not at the first request</pre>
+<div class="r"><b>Watch out</b>Secrets never go in <code>appsettings*.json</code> or Git. Locally use <code>dotnet user-secrets</code> or the compose file (with dev-only values). In the cluster use Kubernetes Secrets. <code>ValidateOnStart</code> turns a misconfigured deployment into a pod that fails fast and visibly, which Kubernetes reports to you.</div>
+</div>
+
+<div class="card" id="k-minimal"><h3>Minimal APIs, route groups, endpoint filters <span class="tag">Task 6</span></h3>
+<p class="one">HTTP endpoints declared as lambdas or static methods (<code>MapGet</code>, <code>MapPost</code>), without controller classes.</p>
+<div class="r"><b>In this project</b><code>app.MapGroup("/api/cities")</code> groups endpoints that share a prefix, a tag, and an authorization policy (<code>RequireAuthorization("Admin")</code>). Parameters are bound automatically: a record from the JSON body, services from DI, <code>CancellationToken</code> from the request. <code>TypedResults</code> plus a <code>Results&lt;Created&lt;…&gt;, ProblemHttpResult&gt;</code> return type give compile-time checking and let OpenAPI describe every response.</div>
+<div class="r"><b>Endpoint filters</b>Code that runs around one endpoint or group (similar to middleware, but with access to the bound arguments). Useful later for cross-cutting checks such as branch scoping.</div>
+<div class="r"><b>Watch out</b>Keep endpoints thin: translate HTTP → command, call the handler, translate Result → HTTP. A business <code>if</code> in an endpoint is in the wrong layer.</div>
+</div>
+
+<div class="card keep" id="k-middleware"><h3>Middleware and the request pipeline <span class="tag">Task 6</span></h3>
+<p class="one">A chain of components that every request passes through, in order, and every response passes back through.</p>
+<div class="r"><b>In this project</b>Order matters: exception handler first (so it catches everything after it), then authentication (who are you?), then authorization (may you?), then the endpoints. Later additions: correlation IDs, rate limiting (partner API), output caching (public site).</div>
+<div class="r"><b>Watch out</b><code>UseAuthorization()</code> before <code>UseAuthentication()</code> means nobody is ever authenticated when authorization runs. A classic bug.</div>
+</div>
+
+<div class="card keep" id="k-problem"><h3>ProblemDetails <span class="tag">Task 6</span></h3>
+<p class="one">A standard JSON shape for HTTP errors (RFC 9457): <code>type</code>, <code>title</code>, <code>status</code>, <code>detail</code>, plus your own fields.</p>
+<pre>HTTP/1.1 409 Conflict
+Content-Type: application/problem+json
+{ "type": "https://agency.example/errors/city.name_taken", "title": "A city with this name already exists.",
+  "status": 409, "code": "city.name_taken", "traceId": "00-4bf9…" }</pre>
+<div class="r"><b>Why</b>One error format for the back office, the partners and the AI tools. The front end can show <code>title</code> and branch on <code>code</code>. <code>AddProblemDetails()</code> + <code>UseExceptionHandler()</code> also turn unhandled exceptions into a 500 ProblemDetails <i>without</i> leaking the stack trace.</div>
+</div>
+
+<div class="card keep" id="k-validation"><h3>Input validation vs business rules <span class="tag">Task 6</span></h3>
+<p class="one">Input validation checks the <i>shape</i> of a request (required, length, format). Business rules check what the domain allows.</p>
+<div class="r"><b>In this project</b>The request record has <code>[Required, MaxLength(100)]</code>, and .NET 10's built-in validation returns a 400 ValidationProblem before your handler even runs. <code>City.Create</code> checks again, because the domain must never trust its caller (the Worker or MCP host could call it too). Uniqueness is a business rule (409), not an input rule (400).</div>
+<div class="r"><b>Watch out</b>Duplicating the length check in two places is fine. Moving the business rule out of the domain into validation attributes is not.</div>
+</div>
+
+<div class="card keep" id="k-logging"><h3>Structured logging with ILogger <span class="tag">Task 6</span></h3>
+<p class="one">Logs as events with named fields, not just text, so you can search "all logs where CityId = …".</p>
+<pre>logger.LogInformation("City {CityId} created", city.Id);    // ✓ template + field
+logger.LogInformation($"City {city.Id} created");           // ✗ string interpolation: field lost</pre>
+<div class="r"><b>In this project</b><code>AddJsonConsole()</code> writes one JSON object per line to stdout, and Kubernetes collects stdout. Levels: <code>Information</code> for business events, <code>Warning</code> for unexpected but handled situations, <code>Error</code> for failures. Never log passwords, tokens or guest personal data (names, passports). Log IDs instead.</div>
+</div>
+
+<div class="card keep" id="k-openapi"><h3>OpenAPI <span class="tag">Task 6</span></h3>
+<p class="one">A machine-readable description of the API (paths, request and response shapes, error codes) in JSON or YAML.</p>
+<div class="r"><b>In this project</b>.NET 10 generates it (<code>AddOpenApi()</code> / <code>MapOpenApi()</code> → <code>/openapi/v1.json</code>, OpenAPI 3.1). It feeds three things: the interactive UI (Scalar or Swagger UI) to try endpoints, the <b>generated TypeScript client</b> (task 8), and later the partner documentation. Part of the definition of done is "OpenAPI updated". The front end's type check fails if the API changed and the client was not regenerated, which is exactly what you want.</div>
+</div>
+
+<div class="card keep" id="k-health"><h3>Health checks <span class="tag">Task 6</span></h3>
+<p class="one">Endpoints that report whether the app is alive and whether it is ready to serve, for Kubernetes probes.</p>
+<div class="r"><b>In this project</b><code>/health/live</code> checks no dependencies: it answers if the process is not stuck. <code>/health/ready</code> includes the database check. See the "probes" card (E6) for why the two must differ.</div>
+</div>
+
+<div class="card keep" id="k-timeprovider"><h3>TimeProvider <span class="tag">From slice 2, rule now</span></h3>
+<p class="one">An injectable clock (<code>TimeProvider.System</code> in production, <code>FakeTimeProvider</code> in tests) instead of <code>DateTime.Now</code>.</p>
+<div class="r"><b>Why</b>Release days, option expiry and "early booking until 31 March" all depend on "today". Tests must control today. <code>DateTime.Now</code> is also local time, while we store UTC (<code>DateTimeOffset</code>/<code>timestamptz</code>). If slice 1 records a <code>CreatedAt</code>, take it from <code>TimeProvider.GetUtcNow()</code>.</div>
+</div>
+
+<div class="card keep" id="k-xunit"><h3>xUnit and Testcontainers <span class="tag">Tasks 1, 5</span></h3>
+<p class="one">xUnit runs tests (<code>[Fact]</code> = one case, <code>[Theory]</code> + <code>[InlineData]</code> = the same test with several inputs). Testcontainers starts real services (PostgreSQL) in Docker for a test run, then removes them.</p>
+<div class="r"><b>Why real PostgreSQL</b>EF Core's in-memory provider does not enforce unique indexes, collations or exclusion constraints, and those are exactly what we need to prove. A shared container per test class (xUnit "fixture") keeps tests fast.</div>
+<div class="r"><b>Watch out</b>Integration tests need Docker running locally and in CI. Each test must create its own data or clean up. Never depend on test order.</div>
+</div>
+
+<h2 id="e3" class="newpage">E3. Data: EF Core and PostgreSQL</h2>
+
+<div class="card" id="k-efcore"><h3>EF Core: DbContext and change tracking <span class="tag deep">Deep dive</span><span class="tag">Task 5</span></h3>
+<p class="one">An ORM (object-relational mapper) that maps C# classes to tables, translates LINQ to SQL, and tracks changes to loaded objects so that <code>SaveChanges</code> writes them.</p>
+<div class="r"><b>How it works</b><code>AgencyDbContext</code> has one <code>DbSet&lt;City&gt;</code> per aggregate root. When you load an entity, the context's <b>change tracker</b> keeps a snapshot. When you call <code>SaveChangesAsync</code>, it compares, generates <code>INSERT</code>/<code>UPDATE</code>/<code>DELETE</code> statements, and runs them <b>in one transaction</b>. That makes the DbContext a natural <b>unit of work</b>: everything changed during one request is saved together or not at all.</div>
+<div class="r"><b>In this project</b>The mapping lives in <code>IEntityTypeConfiguration&lt;T&gt;</code> classes in Infrastructure (the Domain stays clean). The Npgsql provider talks to PostgreSQL. <code>UseSnakeCaseNamingConvention()</code> turns <code>City.Name</code> into column <code>name</code>. Queries that only read use <code>AsNoTracking()</code> (faster, no snapshot).</div>
+<div class="r"><b>Watch out</b><ul>
+<li>A DbContext is not thread-safe. One per request (scoped), and never two queries at once on the same context.</li>
+<li>Translating database errors: a unique violation arrives as <code>DbUpdateException</code> wrapping a <code>PostgresException</code> with <code>SqlState == "23505"</code>. The repository catches exactly that and returns <code>CityErrors.NameTaken</code>. Everything else stays an exception.</li>
+<li>Watch the SQL that LINQ generates. N+1 queries (one query per row in a loop) are the classic ORM performance bug.</li></ul></div>
+<div class="r"><b>Read</b>learn.microsoft.com/ef/core (Getting started, Change tracking, Saving data) and npgsql.org/efcore.</div>
+</div>
+
+<div class="card" id="k-migrations"><h3>Migrations and the Migrator host <span class="tag deep">Deep dive</span><span class="tag">Task 5</span></h3>
+<p class="one">Versioned, code-reviewed steps that move the database schema from one version to the next, generated by comparing your model with a snapshot.</p>
+<div class="r"><b>How it works</b><code>dotnet ef migrations add InitialCatalogue</code> compares the current model with <code>AgencyDbContextModelSnapshot.cs</code> and writes a migration class with <code>Up()</code> (apply) and <code>Down()</code> (revert). The database records applied migrations in <code>__EFMigrationsHistory</code>. Applying runs the missing ones in order.</div>
+<div class="r"><b>Why a separate Migrator</b>With 2+ API pods starting at the same time, "migrate at start-up" means several pods race to change the schema, and a slow migration delays every pod's readiness. Instead, <code>Agency.Migrator</code> is a small console app that applies migrations and exits, run <b>once per release</b> as a Kubernetes Job <i>before</i> the new pods start (ADR 0001, design doc "Running on Kubernetes").</div>
+<div class="r"><b>Watch out</b><ul>
+<li><b>Read every generated migration</b> before committing. It is code that changes production data.</li>
+<li>Never edit a migration that has run anywhere shared. Add a new one.</li>
+<li>Schema changes must be <b>backward compatible</b> with the previous app version for a moment, because old pods still run during a rolling update. Example: add a column as nullable, deploy, backfill, then make it required in a later release ("expand → contract").</li>
+<li>For things EF cannot express (exclusion constraints in slice 2), use <code>migrationBuilder.Sql(...)</code> inside the migration.</li></ul></div>
+</div>
+
+<div class="card keep" id="k-schema"><h3>Schema design: keys and constraints <span class="tag">Task 5</span></h3>
+<p class="one">Let the database itself refuse bad data: primary keys, foreign keys, <code>NOT NULL</code>, <code>UNIQUE</code>, <code>CHECK</code>, and later <code>EXCLUDE</code>.</p>
+<div class="r"><b>Why</b>The old database had 112 tables without a primary key and no foreign keys, so duplicates and orphans crept in. Code checks can be bypassed (a bug, a script, two concurrent requests). Constraints cannot. The rule is <b>check in code for a friendly message, constrain in the database for the guarantee</b>.</div>
+<div class="r"><b>In this project</b><code>catalogue.cities</code>: <code>id uuid PRIMARY KEY</code>, <code>name varchar(100) NOT NULL COLLATE ci_ai</code>, <code>UNIQUE (name)</code>. Later: <code>CHECK (amount &gt;= 0)</code>, foreign keys everywhere, exclusion constraints on <code>daterange</code> for seasons and contract versions.</div>
+</div>
+
+<div class="card keep" id="k-types"><h3>PostgreSQL types: numeric, date, timestamptz, uuid <span class="tag">Task 5</span></h3>
+<table>
+<tr><th style="width:24%">C#</th><th style="width:24%">PostgreSQL</th><th>Use for</th></tr>
+<tr><td><code>decimal</code></td><td><code>numeric(18,2)</code></td><td>Money. Exact. <code>float</code>/<code>double</code> are binary approximations: 0.1 + 0.2 ≠ 0.3.</td></tr>
+<tr><td><code>decimal</code></td><td><code>numeric(18,6)</code></td><td>Exchange rates.</td></tr>
+<tr><td><code>DateOnly</code></td><td><code>date</code></td><td>Stay dates, season limits: a calendar day, no time zone.</td></tr>
+<tr><td><code>DateTimeOffset</code> (UTC)</td><td><code>timestamptz</code></td><td>Moments: created at, approved at. Npgsql requires UTC.</td></tr>
+<tr><td><code>Guid</code></td><td><code>uuid</code></td><td>Identifiers (decision 6).</td></tr>
+</table>
+</div>
+
+<div class="card keep" id="k-collation"><h3>Collations and case/accent-insensitive text <span class="tag">Task 5</span></h3>
+<p class="one">A collation decides how text is compared and sorted. PostgreSQL compares case-sensitively by default, so "Fès" ≠ "fès" ≠ "Fes".</p>
+<div class="r"><b>In this project</b>Hotel, client and city names are French or Moroccan and full of accents. A <b>non-deterministic ICU collation</b> <code>und-u-ks-level1</code> compares at "primary strength": it ignores case and accents. Put a unique index on a column with this collation and the database refuses "fes" when "Fès" exists. The stored value keeps its original spelling.</div>
+<div class="r"><b>Watch out</b>Non-deterministic collations have limits (some pattern matching, some index types). For searching, add a separate index later. <code>citext</code> is the older alternative, but it ignores case only, not accents.</div>
+</div>
+
+<h2 id="e4" class="newpage">E4. Security</h2>
+
+<div class="card" id="k-oidc"><h3>OAuth 2, OpenID Connect, JWT <span class="tag deep">Deep dive</span><span class="tag">Tasks 7, 9</span></h3>
+<p class="one">OAuth 2 lets an application get an <b>access token</b> to call an API. OpenID Connect (OIDC) adds <b>sign-in</b> on top, meaning who the user is. A JWT is the token format: signed JSON the API can verify by itself.</p>
+<div class="r"><b>Why we need it here</b>Staff, partners (by API), the MCP client and later guests all need to prove who they are, and the API must decide what each may do. We do not want to store passwords or write login screens ourselves. A dedicated <b>identity provider</b> (Keycloak, Entra ID) does that, and our API only checks tokens.</div>
+<div class="r"><b>The flow in slice 1: authorization code + PKCE</b></div>
+<ol class="small">
+<li>The user opens the back office. The SPA sees no session and redirects the browser to Keycloak's login page, with a random <b>code verifier</b> hashed into a <b>code challenge</b> (that is PKCE).</li>
+<li>The user signs in <i>on Keycloak</i>. Our app never sees the password.</li>
+<li>Keycloak redirects back with a one-time <b>authorization code</b>.</li>
+<li>The SPA exchanges the code plus the original verifier for tokens. PKCE proves that whoever started the login is the one finishing it, so a stolen code is useless.</li>
+<li>The SPA calls <code>/api/cities</code> with <code>Authorization: Bearer &lt;access token&gt;</code>.</li>
+<li>The API checks the token's <b>signature</b> (with Keycloak's public keys, downloaded once from <code>/.well-known/openid-configuration</code>), its <b>issuer</b>, its <b>audience</b> (is it meant for this API?) and its <b>expiry</b>, then reads the roles.</li>
+</ol>
+<div class="r"><b>Inside a JWT</b>Three base64url parts: <code>header.payload.signature</code>. The payload holds claims such as <code>sub</code> (user ID), <code>iss</code>, <code>aud</code>, <code>exp</code> and <code>roles</code>. It is <b>signed, not encrypted</b>: anyone can read it (try jwt.io with a test token), but nobody can change it without breaking the signature. Never put secrets in it.</div>
+<div class="r"><b>Other flows you will meet</b><b>Client credentials</b> (machine to machine, no user): partners calling the partner API, phase 5. The MCP server uses OAuth for remote clients (phase 5–6).</div>
+<div class="r"><b>Watch out</b>Access tokens are short-lived (minutes). Refresh happens through the OIDC library. Tokens in <code>localStorage</code> can be stolen by any cross-site scripting bug, so prefer memory or session storage, or a BFF (decision 10). Always validate <code>aud</code>, or a token issued for another app would be accepted. Never accept unsigned tokens (<code>alg: none</code>).</div>
+<div class="r"><b>Read</b>oauth.net/2 (overview of flows), "OAuth 2.0 for Browser-Based Apps" (IETF), the Microsoft docs on JWT bearer authentication in ASP.NET Core, and Keycloak's "Getting started with Docker".</div>
+</div>
+
+<div class="card keep" id="k-authz"><h3>Authentication vs authorization, roles and policies <span class="tag">Task 7</span></h3>
+<p class="one">Authentication answers "who are you?" (a valid token gives an identity). Authorization answers "may you do this?" (policies checked per endpoint).</p>
+<div class="r"><b>In this project</b>Slice 1 has one policy, <code>Admin</code> (role <code>admin</code>). From slice 2 there will be named <b>permissions</b> such as <code>ApproveContract</code> and <code>IssueInvoice</code>, plus <b>data scopes</b> (a branch manager sees one branch). Business code checks the permission, not the role name, so roles can be reorganised without code changes.</div>
+<div class="r"><b>Watch out</b>401 = not authenticated (no or invalid token). 403 = authenticated but not allowed. Hiding a button in React is <b>not</b> security. The API enforces every permission (<code>CLAUDE.md</code>, AI rules). Test both codes.</div>
+</div>
+
+<div class="card keep" id="k-secrets"><h3>Secrets management <span class="tag">Tasks 5, 7, 12</span></h3>
+<p class="one">Passwords, keys and connection strings live outside the code and outside Git, and reach the app at run time.</p>
+<div class="r"><b>In this project</b>Locally: <code>dotnet user-secrets</code>, or dev-only values in compose that are never reused. Cluster: Kubernetes Secrets created by CD or by hand, later perhaps synced from a key vault. CI: GitHub encrypted secrets, and better, OIDC federation to the cloud (no stored cloud password at all). This directly fixes the old system's plain-text SQL and Gmail passwords.</div>
+<div class="r"><b>Watch out</b>Kubernetes Secrets are only base64-encoded, not encrypted. Anyone with read access to the namespace can read them, so limit access. If a secret is ever committed, <b>rotate it</b>: deleting the commit is not enough. Turn on GitHub's secret scanning and push protection.</div>
+</div>
+
+<div class="card keep" id="k-owasp"><h3>OWASP Top 10, input validation, output encoding <span class="tag">Whole project</span></h3>
+<p class="one">The OWASP Top 10 (latest edition 2025) lists the most common web vulnerability categories. Use it as a review checklist.</p>
+<div class="r"><b>The ones that matter most here</b><b>Broken access control</b>: an endpoint without a policy, or a partner reading another partner's booking by changing an ID. Test both. <b>Injection</b>: EF Core parameterises queries. Never build SQL with string concatenation, even in <code>FromSqlRaw</code>. <b>Security misconfiguration</b>: Swagger UI or detailed errors in production, default passwords. <b>Vulnerable or compromised dependencies</b> (supply chain): see scanning below. <b>Authentication failures</b>: handled by the identity provider. <b>Logging failures</b>: log security events (failed logins, 403s), but never secrets.</div>
+<div class="r"><b>Output encoding</b>React escapes text by default. Never use <code>dangerouslySetInnerHTML</code> with user or AI content. AI output is untrusted input too (prompt injection, phase 6).</div>
+</div>
+
+<div class="card keep" id="k-scan"><h3>Dependency and image scanning <span class="tag">Tasks 2, 12</span></h3>
+<p class="one">Automatically look for known vulnerabilities (CVEs) in the packages and container images you ship.</p>
+<div class="r"><b>In this project</b>Dependabot (GitHub) opens PRs for vulnerable or outdated packages: NuGet, npm, GitHub Actions and Docker base images. In CI, <code>dotnet list package --vulnerable</code> and <code>pnpm audit</code> for packages, and an image scanner (for example Trivy) on built images. Fail the build on high or critical findings.</div>
+</div>
+
+<h2 id="e5" class="newpage">E5. Front end</h2>
+
+<div class="card keep" id="k-ts"><h3>TypeScript <span class="tag">Task 8</span></h3>
+<p class="one">JavaScript plus static types, checked at build time. Types disappear at run time.</p>
+<div class="r"><b>In this project</b><code>strict: true</code> in <code>tsconfig.json</code> (the front-end equivalent of nullable reference types). API types are <b>generated</b> from OpenAPI, never written by hand, so <code>city.name</code> is known to be a <code>string</code>, and the build breaks when the API changes. Learn: <code>type</code> vs <code>interface</code>, union types (<code>"pending" | "error" | "success"</code>), generics, narrowing with <code>if</code>.</div>
+<div class="r"><b>Watch out</b><code>any</code> switches checking off. Treat it like <code>null!</code>. Types do not validate data at run time: data from outside (API, forms) is validated with a schema library such as Zod (phase 2).</div>
+</div>
+
+<div class="card keep" id="k-pnpm"><h3>pnpm workspaces and Vite <span class="tag">Task 8</span></h3>
+<p class="one">pnpm installs packages fast with a shared store. Workspaces hold several apps and packages in one repository. Vite is the dev server (instant reload) and the production bundler.</p>
+<div class="r"><b>In this project</b><code>frontend/apps/backoffice</code> (later <code>partner-portal</code>, <code>public-site</code>) and <code>frontend/packages/api-client</code>, <code>packages/ui</code>. An app depends on a package with <code>"@agency/api-client": "workspace:*"</code>. <code>pnpm -C frontend -r test</code> runs tests in every package. Commit <code>pnpm-lock.yaml</code> so every install, including CI's, is identical.</div>
+</div>
+
+<div class="card" id="k-react"><h3>React: components, props, state, hooks <span class="tag">Tasks 8, 9</span></h3>
+<p class="one">A UI is a tree of <b>components</b>: functions that take <b>props</b> (inputs) and return markup. <b>State</b> is data that, when it changes, makes React re-render. <b>Hooks</b> (<code>useState</code>, <code>useEffect</code>, custom <code>useXxx</code>) let a component use state and other React features.</p>
+<pre>function CityForm({ onSubmit }: { onSubmit: (name: string) =&gt; void }) {
+  const [name, setName] = useState("");                    // state: re-render on change
+  return (
+    &lt;form onSubmit={e =&gt; { e.preventDefault(); onSubmit(name); setName(""); }}&gt;
+      &lt;input value={name} onChange={e =&gt; setName(e.target.value)} /&gt;  {/* controlled input */}
+      &lt;button type="submit"&gt;Add city&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</pre>
+<div class="r"><b>Mental model</b>UI = f(state). You never change the screen directly. You change state, and React computes the new UI. Data flows <b>down</b> through props, and events flow <b>up</b> through callback props (<code>onSubmit</code>).</div>
+<div class="r"><b>Watch out</b>Hooks only at the top level of a component (never inside <code>if</code> or loops). <code>useEffect</code> is for synchronising with outside systems. Do not use it to fetch data by hand (TanStack Query does that) or to compute values derivable from props. Never mutate state objects. Create new ones.</div>
+<div class="r"><b>Read</b>react.dev/learn ("Thinking in React", "Managing state", "You might not need an effect").</div>
+</div>
+
+<div class="card keep" id="k-router"><h3>React Router <span class="tag">Task 8</span></h3>
+<p class="one">Maps URLs to pages in a single-page app, without full page reloads.</p>
+<div class="r"><b>In this project</b><code>/cities</code> → <code>CitiesPage</code>, inside a layout with navigation. Later, <b>route guards</b> redirect to sign-in or hide pages the user's permissions do not allow (phase 2). Because it is an SPA, the web server must answer <i>every</i> unknown path with <code>index.html</code> (nginx <code>try_files</code>), or refreshing <code>/cities</code> returns a 404.</div>
+</div>
+
+<div class="card" id="k-tanstack"><h3>TanStack Query <span class="tag deep">Deep dive</span><span class="tag">Task 9</span></h3>
+<p class="one">A library that fetches, caches, deduplicates and refreshes <b>server state</b> (data that lives on the server), so components just declare what they need.</p>
+<div class="r"><b>Why</b>Hand-written <code>useEffect</code> + <code>fetch</code> means writing loading flags, error handling, race conditions, refetching and cache invalidation in every screen. TanStack Query does all of that the same way everywhere, and the back office will have hundreds of lists.</div>
+<div class="r"><b>Key ideas</b><b>Query key</b> (<code>["cities"]</code>, later <code>["contracts", id]</code>): the cache address. Same key = shared data and one request. <b>Stale time</b>: how long data counts as fresh before a background refetch. <b>Mutations</b> (<code>useMutation</code>) change data. On success, <b>invalidate</b> the affected keys and the lists refetch themselves (see task 9). Query state is explicit: <code>isPending</code>, <code>isError</code>, <code>data</code>.</div>
+<div class="r"><b>Watch out</b>Do not copy query data into <code>useState</code>, because you then have two sources of truth. Design query keys like URLs: hierarchical and consistent. Keep one <code>QueryClient</code> for the app, and a fresh one per test.</div>
+</div>
+
+<div class="card keep" id="k-client"><h3>Generated API client <span class="tag">Task 8</span></h3>
+<p class="one">TypeScript types (and optionally functions) generated from the API's OpenAPI document.</p>
+<div class="r"><b>In this project</b><code>packages/api-client</code>: <code>openapi-typescript</code> generates <code>schema.d.ts</code>, and <code>openapi-fetch</code> gives a typed <code>client.GET("/api/cities")</code>. A script <code>pnpm gen:api</code> regenerates it, and CI checks that the committed client matches the API (regenerate, then <code>git diff --exit-code</code>). Result: a renamed field in C# becomes a TypeScript compile error, not a bug in production.</div>
+</div>
+
+<div class="card keep" id="k-ui"><h3>Component library, data grid, forms <span class="tag">Task 9</span></h3>
+<p class="one">Ready-made, accessible inputs, tables, dialogs and layouts, so you build business screens, not buttons.</p>
+<div class="r"><b>In this project</b>Decision 14 (MUI / Ant Design / shadcn/ui). The back office is table-heavy (contracts, rates, bookings), so pick one with a strong data grid: sorting, filtering, paging, and virtualisation for long lists. Forms: React Hook Form + Zod from phase 2, when forms get big.</div>
+</div>
+
+<div class="card keep" id="k-oidcbrowser"><h3>OIDC sign-in in the browser <span class="tag">Task 9</span></h3>
+<p class="one">An OIDC client library runs the authorization code + PKCE flow (card E4) inside the SPA.</p>
+<div class="r"><b>In this project</b><code>oidc-client-ts</code> (with <code>react-oidc-context</code>): an <code>AuthProvider</code> at the root, a guard that triggers sign-in, and an API client middleware that adds <code>Authorization: Bearer …</code>. The identity provider URL and client ID come from the runtime <code>/config.json</code> (task 10 gotcha), not from build-time env vars.</div>
+</div>
+
+<div class="card keep" id="k-vitest"><h3>Front-end tests: Vitest and Testing Library <span class="tag">Task 9</span></h3>
+<p class="one">Vitest runs tests (Jest-compatible, Vite-native). Testing Library renders components and queries them the way a user would ("the button named Add city").</p>
+<div class="r"><b>In this project</b>Test that the cities page shows rows, that submitting calls the API, and that a 409 shows "already exists". Mock the network (for example with MSW, Mock Service Worker), not the components. Playwright end-to-end tests come in phase 2 for critical flows.</div>
+</div>
+
+<h2 id="e6" class="newpage">E6. Containers, Kubernetes and delivery</h2>
+
+<div class="card" id="k-containers"><h3>Containers, images, multi-stage builds <span class="tag deep">Deep dive</span><span class="tag">Task 10</span></h3>
+<p class="one">An <b>image</b> packages an app with everything it needs to run (runtime, libraries, files). A <b>container</b> is a running instance of an image, isolated from other processes.</p>
+<div class="r"><b>Why we need it here</b>"Works on my machine" disappears: the image that passed tests in CI is <i>exactly</i> what runs on test and in production. Kubernetes only runs containers.</div>
+<div class="r"><b>How it works</b>A <code>Dockerfile</code> is a recipe of layers. Each instruction adds a cached layer, so put rarely-changing steps (restore packages) before often-changing ones (copy source) to keep rebuilds fast. A <b>multi-stage</b> build uses a big SDK image to compile, then copies only the published output into a small runtime image (task 10). The final image holds no compiler, no source, no test code: smaller, faster to pull, and less to attack.</div>
+<div class="r"><b>In this project</b>Images: <code>agency-api</code> (BackOffice host), <code>agency-migrator</code>, <code>agency-web</code> (nginx + built SPA), and later one per host. .NET images listen on port <b>8080</b> by default and include a non-root <code>app</code> user. <code>docker compose</code> runs the whole system locally with one command. The .NET SDK can also build images without a Dockerfile (<code>dotnet publish /t:PublishContainer</code>), but write the Dockerfile once so you understand it.</div>
+<div class="r"><b>Watch out</b>Add a <code>.dockerignore</code> (<code>bin/</code>, <code>obj/</code>, <code>node_modules/</code>, <code>.git</code>), or the build context becomes huge and may leak files. Never bake secrets into an image: anyone who can pull it can read them. Containers are disposable, so never write important files to the container's disk.</div>
+</div>
+
+<div class="card keep" id="k-registry"><h3>Container registry and image tags <span class="tag">Task 12</span></h3>
+<p class="one">A registry stores images (GHCR, ACR). A tag names a version of an image.</p>
+<div class="r"><b>In this project</b>CI pushes <code>ghcr.io/&lt;org&gt;/agency-api:&lt;git-sha&gt;</code>. The commit SHA makes every tag unique and traceable to the exact code. Helm deploys that SHA. Avoid deploying <code>:latest</code>: you cannot tell what is running, and rollbacks become guesswork.</div>
+</div>
+
+<div class="card" id="k-k8s"><h3>Kubernetes core objects: Pod, Deployment, Service <span class="tag deep">Deep dive</span><span class="tag">Task 11</span></h3>
+<p class="one">Kubernetes runs containers across machines and keeps reality equal to what you declared: "I want 2 copies of agency-api version X, reachable at this name".</p>
+<div class="r"><b>Declarative model</b>You do not run commands like "start a container". You submit YAML describing the <b>desired state</b>. Controllers in the cluster constantly compare desired with actual state and fix the difference: a crashed container is restarted, a lost node's pods are recreated elsewhere.</div>
+<table>
+<tr><th style="width:20%">Object</th><th>What it is</th><th style="width:34%">In this project</th></tr>
+<tr><td><b>Pod</b></td><td>The smallest unit: one (or a few tightly coupled) containers with a shared IP. Disposable and replaceable at any time.</td><td>One API container per pod.</td></tr>
+<tr><td><b>Deployment</b></td><td>Keeps N identical pods running (through a ReplicaSet) and replaces them gradually on a new version.</td><td><code>api</code> (2 replicas), <code>web</code> (2 replicas).</td></tr>
+<tr><td><b>Service</b></td><td>A stable internal name and IP that load-balances to the pods matching a label selector. Pods come and go, but the Service stays.</td><td><code>api</code> → pods labelled <code>app=api</code>, port 80 → 8080.</td></tr>
+<tr><td><b>Ingress / Gateway</b></td><td>HTTP(S) routing from outside the cluster to Services, by host name and path. Needs a controller installed.</td><td><code>/api</code> → api Service, <code>/</code> → web Service, TLS.</td></tr>
+<tr><td><b>ConfigMap / Secret</b></td><td>Configuration given to pods as environment variables or files. Secrets are for sensitive values.</td><td>Auth settings, <code>config.json</code> for the SPA / connection string.</td></tr>
+<tr><td><b>Job / CronJob</b></td><td>Pods that run to completion, once or on a schedule.</td><td>Migrator Job per release. Nightly checks later.</td></tr>
+<tr><td><b>Namespace</b></td><td>A named partition of a cluster: names, permissions and quotas per environment.</td><td><code>agency-local</code>, <code>agency-test</code>, later <code>agency-prod</code>.</td></tr>
+</table>
+<div class="r"><b>Watch out</b>Pods are cattle, not pets: no state on local disk, any pod can die at any time. That is why ASP.NET Core Data Protection keys must be shared (Redis, phase 3) once you rely on cookies, and why concurrency must be safe in the database. <code>kubectl describe pod</code> and <code>kubectl logs</code> are your first debugging tools. The <b>Events</b> at the bottom of <code>describe</code> usually explain the problem (image pull failure, failing probe, out of memory).</div>
+<div class="r"><b>Read</b>kubernetes.io/docs/tutorials ("Learn Kubernetes Basics"), then the Concepts pages for each object.</div>
+</div>
+
+<div class="card keep" id="k-probes"><h3>Liveness, readiness and startup probes <span class="tag">Task 11</span></h3>
+<p class="one">Kubernetes calls your health endpoints to decide whether to <b>restart</b> a pod (liveness) and whether to <b>send it traffic</b> (readiness).</p>
+<div class="r"><b>In this project</b>Liveness → <code>/health/live</code> (no dependencies). Readiness → <code>/health/ready</code> (includes PostgreSQL). If the database blips, pods become <i>not ready</i> (no traffic) but are <b>not restarted</b>. If liveness checked the database, a database outage would make Kubernetes restart every pod in a loop, which makes the outage worse. A startup probe gives slow starts time before liveness kicks in.</div>
+</div>
+
+<div class="card keep" id="k-resources"><h3>Resource requests and limits <span class="tag">Task 11</span></h3>
+<p class="one"><b>Requests</b> are what the scheduler reserves for a pod. <b>Limits</b> are the maximum it may use.</p>
+<div class="r"><b>In this project</b>Start modest (for example API: request 100m CPU / 256Mi memory, memory limit 512Mi) and adjust from real metrics. A pod above its memory limit is killed (<code>OOMKilled</code> in <code>describe</code>). .NET reads the container's memory limit and sizes its garbage collector accordingly. Without requests, the scheduler packs pods blindly.</div>
+</div>
+
+<div class="card" id="k-helm"><h3>Helm: charts and values <span class="tag deep">Deep dive</span><span class="tag">Task 11</span></h3>
+<p class="one">A package manager and template engine for Kubernetes YAML. A <b>chart</b> is a folder of templates. <b>Values</b> files fill them in per environment.</p>
+<div class="r"><b>Why</b>Local, test and production need the same objects with different host names, replica counts, image tags and secret names. Copying YAML three times drifts. With Helm: one chart, one values file per environment.</div>
+<pre># templates/api-deployment.yaml (excerpt)
+spec:
+  replicas: {{ .Values.api.replicas }}
+  template:
+    spec:
+      containers:
+        - name: api
+          image: "{{ .Values.image.registry }}/agency-api:{{ .Values.image.tag }}"
+          envFrom:
+            - secretRef: { name: {{ .Values.database.secretName }} }
+          readinessProbe: { httpGet: { path: /health/ready, port: 8080 } }
+          livenessProbe:  { httpGet: { path: /health/live,  port: 8080 } }
+
+# values-test.yaml
+api: { replicas: 2 }
+image: { registry: ghcr.io/your-org, tag: "set-by-ci" }
+database: { secretName: agency-db }</pre>
+<div class="r"><b>Commands</b><code>helm template</code> renders locally (read the output!). <code>helm upgrade --install</code> installs or upgrades a <b>release</b>. <code>helm history</code> and <code>helm rollback</code> undo a bad release. <b>Hooks</b> (<code>pre-install</code>, <code>pre-upgrade</code>) run Jobs such as the migrator before the new version rolls out.</div>
+<div class="r"><b>Watch out</b>Template whitespace and indentation errors are common. Run <code>helm lint</code> and <code>helm template</code> in CI. Hook ordering versus Secrets: see the gotcha in task 11.</div>
+</div>
+
+<div class="card keep" id="k-ingress"><h3>Ingress, Gateway API, cert-manager and TLS <span class="tag">Tasks 11, 12</span></h3>
+<p class="one">Ingress (and its successor, the Gateway API) routes outside HTTP traffic to Services. cert-manager obtains and renews TLS certificates automatically (for example from Let's Encrypt).</p>
+<div class="r"><b>In this project</b>One host name per front end, <code>/api</code> routed to the API (same origin, no CORS). A <code>ClusterIssuer</code> for Let's Encrypt. Certificates renew without anyone remembering. See the ingress-nginx retirement box in C2 before choosing a controller.</div>
+</div>
+
+<div class="card keep" id="k-rolling"><h3>Rolling updates and rollbacks <span class="tag">Task 12</span></h3>
+<p class="one">A Deployment replaces old pods with new ones gradually, sending traffic only to pods that are <i>ready</i>, so there is no downtime.</p>
+<div class="r"><b>In this project</b>This only works if readiness probes are honest, and if old and new versions can run side by side for a moment against the same database schema ("expand → contract" migrations, E3). Undo with <code>helm rollback</code>, or by redeploying the previous SHA.</div>
+</div>
+
+<div class="card keep" id="k-kind"><h3>kind: Kubernetes in Docker <span class="tag">Task 11</span></h3>
+<p class="one">A full Kubernetes cluster running as Docker containers on your laptop. Free, disposable, and identical in API to a cloud cluster.</p>
+<div class="r"><b>In this project</b>Learn and debug the Helm chart locally before paying for cloud. Images built locally must be loaded into kind (<code>kind load docker-image</code>). To reach an Ingress on kind, the cluster config maps ports 80/443 to your machine (<code>extraPortMappings</code>). <code>kind delete cluster</code> and start again whenever you are lost: that is the point.</div>
+</div>
+
+<div class="card" id="k-cicd"><h3>CI/CD with GitHub Actions <span class="tag deep">Deep dive</span><span class="tag">Tasks 2, 12</span></h3>
+<p class="one"><b>Continuous integration</b>: every push is built and tested automatically. <b>Continuous delivery/deployment</b>: every merge to the main branch produces images and deploys them to the test environment.</p>
+<div class="r"><b>How GitHub Actions works</b>A <b>workflow</b> (<code>.github/workflows/*.yml</code>) is triggered by <b>events</b> (<code>pull_request</code>, <code>push</code>). It contains <b>jobs</b> that run on fresh <b>runners</b> (virtual machines), and each job is a list of <b>steps</b>: shell commands, or reusable <b>actions</b> (<code>actions/checkout</code>). Jobs run in parallel unless one <code>needs</code> another.</div>
+<div class="r"><b>In this project</b><code>ci.yml</code> on every PR: backend build + tests (including Testcontainers), front-end type check + lint + tests + build, OpenAPI client drift check, Helm lint. <code>cd.yml</code> on merge to <code>main</code>: build and push images tagged with the SHA, run <code>helm upgrade --install</code> against <code>agency-test</code>. Branch protection makes the CI check mandatory before merging.</div>
+<div class="r"><b>Watch out</b><ul>
+<li>Give the workflow's <code>GITHUB_TOKEN</code> only the permissions it needs (<code>permissions:</code> block, for example <code>packages: write</code> for GHCR).</li>
+<li>Prefer <b>OIDC federation</b> to the cloud over storing long-lived cloud credentials as secrets.</li>
+<li>Pin third-party actions to a version (ideally a commit SHA). An action is code that runs with your secrets.</li>
+<li>Cache NuGet and pnpm stores to keep runs fast.</li>
+<li>Keep production deployment behind a manual approval (GitHub "environments") when you get there.</li></ul></div>
+<div class="r"><b>Read</b>docs.github.com/actions ("Understanding GitHub Actions", "Security hardening for GitHub Actions").</div>
+</div>
+
+<div class="card keep" id="k-managed"><h3>Managed PostgreSQL and Redis <span class="tag">Task 12</span></h3>
+<p class="one">The cloud provider runs the database server: patching, backups, point-in-time recovery, failover. You get a connection string.</p>
+<div class="r"><b>In this project</b>ADR 0004: billing data must not be lost, so production PostgreSQL is managed, outside the cluster. For local and kind, a PostgreSQL container is fine because the data is disposable. Before go-live, <b>test a restore</b>: a backup you have never restored is a hope, not a backup. Require TLS on the connection and allow only the cluster's network.</div>
+</div>
+
+<h2 id="e7">E7. Git and pull requests</h2>
+<div class="card keep" id="k-git"><h3>Branches, commits, pull requests <span class="tag">Task 0</span></h3>
+<p class="one">Every change is made on a short-lived branch, reviewed as a pull request and merged into <code>main</code>, which must always be deployable.</p>
+<div class="r"><b>Habits</b>Small commits that each build. Messages in the imperative that say <i>why</i> ("Add unique index on city name to prevent duplicates under concurrency"). Stage with <code>git add -p</code> so you read every hunk. Squash-merge PRs for a clean history. Delete merged branches. Rebase your branch on <code>main</code> if it falls behind (<code>git pull --rebase origin main</code>).</div>
+<div class="r"><b>Reviewing your own PR</b>Read the diff on GitHub as if a stranger wrote it. Check it against the definition of done (B4). With AI-written code, ask: does it follow <code>CLAUDE.md</code>? Did it add a dependency? Did it invent an API that does not exist? Is every new branch of logic tested?</div>
+</div>
+
+<!-- ===================================================== APPENDIX -->
+<h1 class="part" id="part-f"><span class="n">Appendix</span>Reference</h1>
+
+<h2 id="f1">F1. Acronyms</h2>
+<table class="small">
+<tr><th style="width:14%">Acronym</th><th>Meaning</th><th style="width:14%">Acronym</th><th>Meaning</th></tr>
+<tr><td>ADR</td><td>Architecture Decision Record</td><td>ORM</td><td>Object-relational mapper (EF Core)</td></tr>
+<tr><td>BFF</td><td>Backend for frontend (server keeps tokens for the browser)</td><td>PKCE</td><td>Proof Key for Code Exchange (protects the OAuth code)</td></tr>
+<tr><td>CI/CD</td><td>Continuous integration / continuous delivery</td><td>RFC</td><td>Request for Comments: an internet standard document</td></tr>
+<tr><td>CNDP</td><td>Moroccan data-protection authority (Law 09-08)</td><td>SPA</td><td>Single-page application</td></tr>
+<tr><td>CORS</td><td>Cross-origin resource sharing (browser rule for calls to another origin)</td><td>SHA</td><td>Here: the Git commit hash used as an image tag</td></tr>
+<tr><td>CPM</td><td>Central Package Management (<code>Directory.Packages.props</code>)</td><td>TLS</td><td>Transport Layer Security: the "S" in HTTPS</td></tr>
+<tr><td>CQRS</td><td>Command/query responsibility segregation</td><td>TO</td><td>Tour operator</td></tr>
+<tr><td>DDD</td><td>Domain-driven design</td><td>DMC</td><td>Destination management company</td></tr>
+<tr><td>DI</td><td>Dependency injection</td><td>OTA</td><td>Online travel agency</td></tr>
+<tr><td>DTO</td><td>Data transfer object: a plain shape for crossing a boundary</td><td>LTS</td><td>Long-term support release</td></tr>
+<tr><td>JWT</td><td>JSON Web Token</td><td>MCP</td><td>Model Context Protocol (manager assistant)</td></tr>
+<tr><td>OIDC</td><td>OpenID Connect</td><td>RAG</td><td>Retrieval-augmented generation (guest assistant, phase 6)</td></tr>
+</table>
+
+<h2 id="f2">F2. Official documentation</h2>
+<table class="small">
+<tr><th style="width:28%">Topic</th><th>Where</th></tr>
+<tr><td>.NET, C#</td><td>learn.microsoft.com/dotnet</td></tr>
+<tr><td>ASP.NET Core (minimal APIs, auth, health, OpenAPI)</td><td>learn.microsoft.com/aspnet/core</td></tr>
+<tr><td>EF Core / Npgsql provider</td><td>learn.microsoft.com/ef/core · npgsql.org/efcore</td></tr>
+<tr><td>PostgreSQL (collations, constraints, ranges)</td><td>postgresql.org/docs</td></tr>
+<tr><td>Testcontainers for .NET</td><td>dotnet.testcontainers.org</td></tr>
+<tr><td>React · TanStack Query · React Router</td><td>react.dev/learn · tanstack.com/query · reactrouter.com</td></tr>
+<tr><td>Vite · pnpm · TypeScript</td><td>vite.dev · pnpm.io · typescriptlang.org/docs</td></tr>
+<tr><td>Docker</td><td>docs.docker.com (Dockerfile best practices, multi-stage builds)</td></tr>
+<tr><td>Kubernetes · kind · Helm</td><td>kubernetes.io/docs/tutorials · kind.sigs.k8s.io · helm.sh/docs</td></tr>
+<tr><td>Gateway API · cert-manager</td><td>gateway-api.sigs.k8s.io · cert-manager.io/docs</td></tr>
+<tr><td>GitHub Actions</td><td>docs.github.com/actions</td></tr>
+<tr><td>OAuth 2 / OIDC · Keycloak</td><td>oauth.net/2 · openid.net · keycloak.org/documentation</td></tr>
+<tr><td>OWASP Top 10</td><td>owasp.org/www-project-top-ten</td></tr>
+</table>
+
+<h2 id="f3">F3. What comes next (slice 2 preview)</h2>
+<p>After the gate demo: <b>a hotel contract with one season and one rate, and the pricing engine returning a price for a stay.</b> New concepts then: value objects (<code>Money</code>, <code>DateRange</code>, <code>Occupancy</code>), <code>decimal</code> rounding rules, <code>DateOnly</code>, <code>TimeProvider</code>, contract versions as a state machine, <code>daterange</code> + exclusion constraints, optimistic concurrency, the audit log, and the first domain tests that really matter, based on the contracting team's worked examples. This handbook gains a new Part E section at that point.</p>
+
+</body>
+</html>
